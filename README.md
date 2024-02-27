@@ -33,7 +33,7 @@ The Sovereign-T Protocol is a groundbreaking blockchain initiative designed to r
 
 1. Clone the Repository:
    ```bash
-   git clone https://github.com/Sovereign-T/DiscoveryNet.git
+   git clone https://github.com/Sovereign-T/Sovereign-T-Protocol-sdk.git
    ```
 
 2. Build the Node:
