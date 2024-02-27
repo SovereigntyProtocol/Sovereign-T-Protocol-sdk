@@ -27,7 +27,7 @@ The Sovereign-T Protocol is a groundbreaking blockchain initiative designed to r
 
 - Golang >=1.15
 - Git
-- Cosmos SDK
+- Cosmos SDK 0.50.4
 
 For detailed instructions on joining the testnet, configuring your node, and participating in the network, refer to our [full documentation](https://develop.sovereignty.one/).
 
