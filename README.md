@@ -29,34 +29,6 @@ The Sovereign-T Protocol is a groundbreaking blockchain initiative designed to r
 - Git
 - Cosmos SDK
 
-### Installation Steps
-
-1. Clone the Repository:
-   ```bash
-   git clone https://github.com/Sovereign-T/Sovereign-T-Protocol-sdk.git
-   ```
-
-2. Build the Node:
-   ```bash
-   cd DiscoveryNet
-   make install
-   ```
-
-3. Initialize the Node:
-   ```bash
-   sovereigntd init <your_node_name> --chain-id discoverynet-0.0.1v
-   ```
-
-4. Add Validator Keys:
-   ```bash
-   sovereigntd keys add validator
-   ```
-
-5. Start Your Node:
-   ```bash
-   sovereigntd start
-   ```
-
 For detailed instructions on joining the testnet, configuring your node, and participating in the network, refer to our [full documentation](https://develop.sovereignty.one/).
 
 ## Contributing
