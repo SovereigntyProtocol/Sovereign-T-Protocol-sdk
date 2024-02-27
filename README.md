@@ -57,11 +57,11 @@ The Sovereign-T Protocol is a groundbreaking blockchain initiative designed to r
    sovereigntd start
    ```
 
-For detailed instructions on joining the testnet, configuring your node, and participating in the network, refer to our [full documentation](#).
+For detailed instructions on joining the testnet, configuring your node, and participating in the network, refer to our [full documentation](https://develop.sovereignty.one/).
 
 ## Contributing
 
-We welcome contributions from the community! Whether you're interested in coding, documentation, or testing, there's space for you to make an impact. Check out our [contributing guidelines](CONTRIBUTING.md) for more information on how to get involved.
+We welcome contributions from the community! Whether you're interested in coding, documentation, or testing, there's space for you to make an impact. Check out our [contribution guidelines](contribution.md) for more information on how to get involved.
 
 ## License
 
