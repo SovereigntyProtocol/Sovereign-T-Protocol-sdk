@@ -1,0 +1,65 @@
+afraid try snap actual scrap cube friend voice ugly like cactus stock soft wood plunge frown pride wrist eager car biology ocean drum minor 
+
+
+====>>>Init the chain 
+./build/simd init demo --home ./private/.simapp --chain-id learning-chain-1
+
+
+====>>>Prepare Account
+./build/simd keys add alice --home ./private/.simapp --keyring-backend test
+
+memonic 
+maximum three north baby chapter rely elegant hurt daughter economy always north royal move weird undo warm economy blue endorse shadow cool panther wreck
+
+
+====>>>Giving balance to becoming a validator
+./build/simd genesis add-genesis-account alice 100000000000000000000stake --home ./private/.simapp --keyring-backend test
+
+
+
+====>>>staking amount
+./build/simd genesis gentx alice 70000000stake --home ./private/.simapp --keyring-backend test --chain-id learning-chain-1
+
+
+====>>>collection staking amount tx to genesis file
+./build/simd genesis collect-gentxs --home ./private/.simapp
+
+
+
+====>>>stating the chain
+./build/simd start --api.enable true --grpc.enable true --home ./private/.simapp
+
+
+======>>> see the balance of account
+./build/simd query bank balances  ssi1v6a6mmvs9umhjppk4t9pxu2m0whd0unp9ss6m9
+./build/simd query bank balances  ssi15katrg44pxfqwumsgtjvkt0r7f20prn2ulpqvj
+
+
+=======>>> Remove the whole data of blockchain
+rm -rf ./private/.simapp
+
+
+File path of where "cosmos" written
+
+C:\Users\maalc\Desktop\cosmos\cosmos-sdk-0.50.2\cosmos-sdk-0.50.2\client\v2\autocli\common_test.go
+  118,10: 			Bech32AccountAddressPrefix: "sst",
+
+cosmos-sdk-0.50.2/simapp/app_config.go
+
+cosmos-sdk-0.50.2/testutil/configurator/configurator.go
+
+C:\Users\maalc\Desktop\cosmos\cosmos-sdk-0.50.2\cosmos-sdk-0.50.2\types\address.go
+
+C:\Users\maalc\Desktop\cosmos\cosmos-sdk-0.50.2\cosmos-sdk-0.50.2\codec\testutil\codec.go
+  23,20: 		accAddressPrefix = "sst"
+
+C:\Users\maalc\Desktop\cosmos\cosmos-sdk-0.50.2\cosmos-sdk-0.50.2\types\address_test.go
+  149,9: 	prefix = "sst"
+  186,9: 	prefix = "sst"
+
+
+
+might neet changes
+C:\Users\maalc\Desktop\cosmos\cosmos-sdk-0.50.2\cosmos-sdk-0.50.2\types\config.go
+
+ 

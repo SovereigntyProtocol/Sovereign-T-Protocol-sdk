@@ -1,45 +1,69 @@
-# Sovereign-T Protocol: DiscoveryNet (Version 0.0.1v)
+<div align="center">
+  <h1> Cosmos SDK </h1>
+</div>
 
-## Introduction
+![banner](docs/static/img/banner.jpg)
 
-The Sovereign-T Protocol is a groundbreaking blockchain initiative designed to redefine digital identity management. Built using the Cosmos SDK, it aims to provide a decentralized, secure, and scalable solution for digital identities, fostering user sovereignty and data privacy. The first version of our blockchain, 0.0.1v, is named DiscoveryNet, marking the beginning of our journey towards a more secure and interoperable digital world.
+<div align="center">
+  <a href="https://github.com/cosmos/cosmos-sdk/blob/main/LICENSE">
+    <img alt="License: Apache-2.0" src="https://img.shields.io/github/license/cosmos/cosmos-sdk.svg" />
+  </a>
+  <a href="https://pkg.go.dev/github.com/cosmos/cosmos-sdk">
+    <img src="https://pkg.go.dev/badge/github.com/cosmos/cosmos-sdk.svg" alt="Go Reference">
+  </a>
+  <a href="https://goreportcard.com/report/github.com/cosmos/cosmos-sdk">
+    <img alt="Go report card" src="https://goreportcard.com/badge/github.com/cosmos/cosmos-sdk" />
+  </a>
+  <a href="https://sonarcloud.io/summary/overall?id=cosmos_cosmos-sdk">
+    <img alt="Code Coverage" src="https://sonarcloud.io/api/project_badges/measure?project=cosmos_cosmos-sdk&metric=coverage" />
+  </a>
+  <a href="https://sonarcloud.io/summary/overall?id=cosmos_cosmos-sdk">
+    <img alt="SonarCloud Analysis" src="https://sonarcloud.io/api/project_badges/measure?project=cosmos_cosmos-sdk&metric=alert_status">
+  </a>
+</div>
+<div align="center">
+  <a href="https://discord.gg/AzefAFd">
+    <img alt="Discord" src="https://img.shields.io/discord/669268347736686612.svg" />
+  </a>
+  <a href="https://sourcegraph.com/github.com/cosmos/cosmos-sdk?badge">
+    <img alt="Imported by" src="https://sourcegraph.com/github.com/cosmos/cosmos-sdk/-/badge.svg" />
+  </a>
+    <img alt="Sims" src="https://github.com/cosmos/cosmos-sdk/workflows/Sims/badge.svg" />
+    <img alt="Lint Satus" src="https://github.com/cosmos/cosmos-sdk/workflows/Lint/badge.svg" />
+</div>
 
-## Sovereign-T Architecture Overview
+The Cosmos SDK is a framework for building blockchain applications. [CometBFT (BFT Consensus)](https://github.com/cometbft/cometbft) and the Cosmos SDK are written in the Go programming language. Cosmos SDK is used to build [Gaia](https://github.com/cosmos/gaia), the implementation of the Cosmos Hub.
 
-### Key Components
+**WARNING**: The Cosmos SDK has mostly stabilized, but we are still making some breaking changes.
 
-- **Cosmos SDK**: Utilizes the Cosmos SDK for its modular and upgradable architecture, facilitating the creation of application-specific blockchains.
-- **Decentralized Verifier Network (DEVNET)**: A network of verifiers operates similarly to Chainlink's oracle nodes, providing reliable verification services for identity attributes.
-- **DaVinci Box**: An innovative, decentralized storage solution, DaVinci Box securely encrypts and stores identity attributes, ensuring that sensitive information remains   confidential. Utilizing advanced cryptographic techniques, it guarantees that data is accessible exclusively to the prover engine. This allows for seamless querying by DEVNET upon requests for attribute verification from verifiers or platforms. DaVinci Box empowers users to share their identity confidently, knowing their data is protected and only disclosed during authorized verification processes.
-- **Prover Engine**: Fetches data from oracle nodes and sends verification data to requesting parties, ensuring accurate and timely identity verification.
-- **SovID Token**: The native token of the Sovereign-T Protocol, used to incentivize oracle network uptime and participation in the ecosystem.
-- **Governance and Staking**: Employs a decentralized governance model, allowing token holders to vote on proposals and stake tokens as a security measure and for network participation.
+**Note**: We advise to always use the latest maintained [Go](https://go.dev/dl) version for building Cosmos SDK applications.
 
-### Design Principles
+## Quick Start
 
-- **User Sovereignty**: Prioritizes user control over digital identities, allowing individuals to manage their data securely and privately.
-- **Scalability**: Designed for high scalability without compromising network security or performance, accommodating the growing demands of digital identity management.
-- **Interoperability**: Ensures seamless interaction with other blockchains and digital ecosystems, enhancing the utility and reach of digital identities.
-- **Security**: Implements state-of-the-art cryptographic techniques to protect data and transactions, ensuring a secure environment for all users.
+To learn how the Cosmos SDK works from a high-level perspective, see the Cosmos SDK [High-Level Intro](https://docs.cosmos.network/main/intro/overview.html).
 
-## Setting Up DiscoveryNet
+If you want to get started quickly and learn how to build on top of Cosmos SDK, visit [Cosmos SDK Tutorials](https://tutorials.cosmos.network). You can also fork the tutorial's repository to get started building your own Cosmos SDK application.
 
-### Requirements
-
-- Golang >=1.15
-- Git
-- Cosmos SDK 0.50.4
-
-For detailed instructions on joining the testnet, configuring your node, and participating in the network, refer to our [full documentation](https://develop.sovereignty.one/).
+For more information, see the [Cosmos SDK Documentation](https://docs.cosmos.network).
 
 ## Contributing
 
-We welcome contributions from the community! Whether you're interested in coding, documentation, or testing, there's space for you to make an impact. Check out our [contribution guidelines](contribution.md) for more information on how to get involved.
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for details on how to contribute and participate in our [dev calls](./CONTRIBUTING.md#teams-dev-calls).
+If you want to follow the updates or learn more about the latest design then join our [Discord](https://discord.com/invite/cosmosnetwork).
 
-## License
+## Tools and Frameworks
 
-The Sovereign-T Protocol is licensed under the [Apache 2.0 License](LICENSE).
+The Cosmos ecosystem is vast.
+[Awesome Cosmos](https://github.com/cosmos/awesome-cosmos) is a community-curated list of notable frameworks, modules and tools.
 
----
+### Cosmos Hub Mainnet
 
-This README provides a comprehensive guide for contributors and users interested in the Sovereign-T Protocol's DiscoveryNet, detailing its architecture, setup instructions, and contribution opportunities.
+The Cosmos Hub application, `gaia`, has its own [cosmos/gaia repository](https://github.com/cosmos/gaia). Go there to join the Cosmos Hub mainnet and more.
+
+### Inter-Blockchain Communication (IBC)
+
+The IBC module for the Cosmos SDK has its own [cosmos/ibc-go repository](https://github.com/cosmos/ibc-go). Go there to build and integrate with the IBC module.
+
+## Disambiguation
+
+This Cosmos SDK project is not related to the [React-Cosmos](https://github.com/react-cosmos/react-cosmos) project (yet). Many thanks to Evan Coury and Ovidiu (@skidding) for this Github organization name. As per our agreement, this disambiguation notice will stay here.
