@@ -10,6 +10,7 @@ The Sovereign-T Protocol is a groundbreaking blockchain initiative designed to r
 
 - **Cosmos SDK**: Utilizes the Cosmos SDK for its modular and upgradable architecture, facilitating the creation of application-specific blockchains.
 - **Decentralized Verifier Network (DEVNET)**: A network of verifiers operates similarly to Chainlink's oracle nodes, providing reliable verification services for identity attributes.
+- **DaVinci Box**: An innovative, decentralized storage solution, DaVinci Box securely encrypts and stores identity attributes, ensuring that sensitive information remains   confidential. Utilizing advanced cryptographic techniques, it guarantees that data is accessible exclusively to the prover engine. This allows for seamless querying by DEVNET upon requests for attribute verification from verifiers or platforms. DaVinci Box empowers users to share their identity confidently, knowing their data is protected and only disclosed during authorized verification processes.
 - **Prover Engine**: Fetches data from oracle nodes and sends verification data to requesting parties, ensuring accurate and timely identity verification.
 - **STP Token**: The native token of the Sovereign-T Protocol, used to incentivize oracle network uptime and participation in the ecosystem.
 - **Governance and Staking**: Employs a decentralized governance model, allowing token holders to vote on proposals and stake tokens as a security measure and for network participation.
