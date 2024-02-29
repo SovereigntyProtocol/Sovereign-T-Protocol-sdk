@@ -1,24 +1,31 @@
 afraid try snap actual scrap cube friend voice ugly like cactus stock soft wood plunge frown pride wrist eager car biology ocean drum minor 
 
 
+=====>Build sdk
+ make build
+
+ =======>>> Remove the whole data of blockchain
+rm -rf ./private/.simapp
+
+
 ====>>>Init the chain 
-./build/simd init demo --home ./private/.simapp --chain-id learning-chain-1
+./build/simd init demo --home ./private/.simapp --chain-id discoverynet-chain-1
 
 
 ====>>>Prepare Account
 ./build/simd keys add alice --home ./private/.simapp --keyring-backend test
 
 memonic 
-maximum three north baby chapter rely elegant hurt daughter economy always north royal move weird undo warm economy blue endorse shadow cool panther wreck
+mention hour hero glimpse pen tide fiber split unusual upper delay ski grunt hold job cable host lake pluck kiss betray ladder pizza romance
 
 
 ====>>>Giving balance to becoming a validator
-./build/simd genesis add-genesis-account alice 100000000000000000000stake --home ./private/.simapp --keyring-backend test
+./build/simd genesis add-genesis-account alice 100000000000000stake --home ./private/.simapp --keyring-backend test
 
 
 
 ====>>>staking amount
-./build/simd genesis gentx alice 70000000stake --home ./private/.simapp --keyring-backend test --chain-id learning-chain-1
+./build/simd genesis gentx alice 7000000000stake --home ./private/.simapp --keyring-backend test --chain-id discoverynet-chain-1
 
 
 ====>>>collection staking amount tx to genesis file
@@ -35,8 +42,12 @@ maximum three north baby chapter rely elegant hurt daughter economy always north
 ./build/simd query bank balances  ssi15katrg44pxfqwumsgtjvkt0r7f20prn2ulpqvj
 
 
-=======>>> Remove the whole data of blockchain
-rm -rf ./private/.simapp
+
+
+
+
+
+
 
 
 File path of where "cosmos" written
