@@ -9,7 +9,7 @@ rm -rf ./private/.simapp
 
 
 ====>>>Init the chain 
-./build/simd init demo --home ./private/.simapp --chain-id discoverynet-chain-1
+./build/simd init sovid --home ./private/.simapp --chain-id discoverynet-chain-1
 
 
 ====>>>Prepare Account
