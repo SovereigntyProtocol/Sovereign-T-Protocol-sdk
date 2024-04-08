@@ -9,44 +9,62 @@ rm -rf ./private/.simapp
 
 
 ====>>>Init the chain 
-./build/simd init sovid --home ./private/.simapp --chain-id discoverynet-chain-1
+./build/simd init sovid2 --home ./private/.simapp --chain-id test-chain-2
 
 
 ====>>>Prepare Account
-./build/simd keys add alice --home ./private/.simapp --keyring-backend test
+./build/simd keys add nikk --home ./private/.simapp --keyring-backend test
 
-memonic 
-mention hour hero glimpse pen tide fiber split unusual upper delay ski grunt hold job cable host lake pluck kiss betray ladder pizza romance
+
+memonic && address && name 
+nikk
+ssi16fkwtn6hputf2qct653nlzpsl7zmt5cx3mt3xx
+guess force scene gold unit inhale ability stuff gown frame mosquito grief cement age convince concert rival rival street tackle oxygen doctor rebel engage
 
 
 ====>>>Giving balance to becoming a validator
-./build/simd genesis add-genesis-account alice 100000000000000stake --home ./private/.simapp --keyring-backend test
-
+./build/simd genesis add-genesis-account nikk 100000000000000stake --home ./private/.simapp --keyring-backend test
 
 
 ====>>>staking amount
-./build/simd genesis gentx alice 7000000000stake --home ./private/.simapp --keyring-backend test --chain-id discoverynet-chain-1
+./build/simd genesis gentx nikk 7000000000stake --home ./private/.simapp --keyring-backend test --chain-id test-chain-2
 
 
 ====>>>collection staking amount tx to genesis file
 ./build/simd genesis collect-gentxs --home ./private/.simapp
 
-
-
-====>>>stating the chain
-./build/simd start --api.enable true --grpc.enable true --home ./private/.simapp
+====>>>starting the chain
+./build/simd start --api.enable true --api.address tcp://0.0.0.0:1317 --grpc.enable true --rpc.laddr tcp://0.0.0.0:26657 --home ./private/.simapp
 
 
 ======>>> see the balance of account
-./build/simd query bank balances  ssi1v6a6mmvs9umhjppk4t9pxu2m0whd0unp9ss6m9
-./build/simd query bank balances  ssi15katrg44pxfqwumsgtjvkt0r7f20prn2ulpqvj
+./build/simd query bank balances  ssi17cwxvr0vzm73th0cv9g2ze8rpps6fzy7duyhfu
+./build/simd query bank balances  ssi1gmpy34t3s9wj2ht743a9vtg4hgj9t474dvwtt5
+
+
+=======>> node address 
+./build/simd comet show-address --home ./private/.simapp
+ssivalcons1julg7ml89vzzhjn7nh3lumzpmmts2y8v9heqvx
+
+
+======>>node-id 
+./build/simd comet show-node-id --home ./private/.simapp
+2e05c3e1126b8f5343569f5f2e9361496cf842ae
+
+
+=======>>> where we can get the pubkey using 
+./build/simd tendermint show-validator
+
+
+======>>> start validator node 
+./build/simd start --p2p.persistent_peers dc820530567b8550d78938411bcb4bfb0075de88@54.254.160.220:26656 --api.enable true --api.address tcp://0.0.0.0:1317 --grpc.enable true --rpc.laddr tcp://0.0.0.0:26657  --home ./private/.simapp
+
+
+./build/simd tx staking create-validator /Users/nikhil/Downloads/Github/Sovereign-T-Protocol-sdk-harry/validator.json --chain-id test-chain-2 --fees 500stake --node http://54.254.160.220:26657 --from nikk
 
 
 
-
-
-
-
+./build/simd config node http://54.254.160.220:26657:26657
 
 
 
@@ -74,3 +92,7 @@ might neet changes
 C:\Users\maalc\Desktop\cosmos\cosmos-sdk-0.50.2\cosmos-sdk-0.50.2\types\config.go
 
  
+validator key 
+nikk
+ssi1rt7xmdzkfgtm9wwjz38gmxmswqhl3rzwfurf7e
+ozone layer evidence obvious ceiling present vast tank smoke rather whisper raise call awesome guide unfair adjust clerk document negative spare safe safe host
