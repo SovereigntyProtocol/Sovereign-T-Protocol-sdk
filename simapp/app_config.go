@@ -3,6 +3,10 @@ package simapp
 import (
 	"time"
 
+	tokenfactorymodulev1 "github.com/cosmos/cosmos-sdk/tokenfactory/module"
+	_ "github.com/cosmos/cosmos-sdk/x/tokenfactory/module" // import for side-effects
+	tokenfactorymoduletypes "github.com/cosmos/cosmos-sdk/x/tokenfactory/types"
+
 	"google.golang.org/protobuf/types/known/durationpb"
 
 	runtimev1alpha1 "cosmossdk.io/api/cosmos/app/runtime/v1alpha1"
@@ -84,6 +88,7 @@ var (
 		{Account: stakingtypes.NotBondedPoolName, Permissions: []string{authtypes.Burner, stakingtypes.ModuleName}},
 		{Account: govtypes.ModuleName, Permissions: []string{authtypes.Burner}},
 		{Account: nft.ModuleName},
+		{Account: tokenfactorymoduletypes.ModuleName, Permissions: []string{authtypes.Minter, authtypes.Burner, authtypes.Staking}},
 	}
 
 	// blocked account addresses
@@ -120,6 +125,7 @@ var (
 						evidencetypes.ModuleName,
 						stakingtypes.ModuleName,
 						authz.ModuleName,
+						tokenfactorymoduletypes.ModuleName,
 					},
 					EndBlockers: []string{
 						crisistypes.ModuleName,
@@ -127,6 +133,7 @@ var (
 						stakingtypes.ModuleName,
 						feegrant.ModuleName,
 						group.ModuleName,
+						tokenfactorymoduletypes.ModuleName,
 					},
 					OverrideStoreKeys: []*runtimev1alpha1.StoreKeyConfig{
 						{
@@ -155,6 +162,7 @@ var (
 						paramstypes.ModuleName,
 						upgradetypes.ModuleName,
 						vestingtypes.ModuleName,
+						tokenfactorymoduletypes.ModuleName,
 						circuittypes.ModuleName,
 					},
 					// When ExportGenesis is not specified, the export genesis module order
@@ -255,6 +263,10 @@ var (
 			{
 				Name:   consensustypes.ModuleName,
 				Config: appconfig.WrapAny(&consensusmodulev1.Module{}),
+			},
+			{
+				Name:   tokenfactorymoduletypes.ModuleName,
+				Config: appconfig.WrapAny(&tokenfactorymodulev1.Module{}),
 			},
 			{
 				Name:   circuittypes.ModuleName,
