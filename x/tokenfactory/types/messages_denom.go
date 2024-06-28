@@ -31,6 +31,10 @@ func (msg *MsgCreateDenom) ValidateBasic() error {
 		return errorsmod.Wrapf(sdkerrors.ErrInvalidAddress, "invalid owner address (%s)", err)
 	}
 
+	if msg.Denom == sdk.DefaultBondDenom {
+		return errorsmod.Wrap(sdkerrors.ErrUnauthorized, "not allowed")
+	}
+
 	tickerLength := len(msg.Ticker)
 	if tickerLength < 3 {
 		return errorsmod.Wrapf(sdkerrors.ErrInvalidRequest, "Ticker length must be at least 3 chars long")
