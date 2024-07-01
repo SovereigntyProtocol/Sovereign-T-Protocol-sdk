@@ -108,6 +108,8 @@ import (
 	"github.com/cosmos/cosmos-sdk/x/staking"
 	stakingkeeper "github.com/cosmos/cosmos-sdk/x/staking/keeper"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
+
+	tokenfactorymodulekeeper "github.com/cosmos/cosmos-sdk/x/tokenfactory/keeper"
 )
 
 const appName = "SimApp"
@@ -169,6 +171,8 @@ type SimApp struct {
 	// the module manager
 	ModuleManager      *module.Manager
 	BasicModuleManager module.BasicManager
+
+	TokenfactoryKeeper tokenfactorymodulekeeper.Keeper
 
 	// simulation manager
 	sm *module.SimulationManager
@@ -284,7 +288,7 @@ func NewSimApp(
 
 	// add keepers
 	app.AccountKeeper = authkeeper.NewAccountKeeper(appCodec, runtime.NewKVStoreService(keys[authtypes.StoreKey]), authtypes.ProtoBaseAccount, maccPerms, authcodec.NewBech32Codec(sdk.Bech32MainPrefix), sdk.Bech32MainPrefix, authtypes.NewModuleAddress(govtypes.ModuleName).String())
-
+	// app.TokenfactoryKeeper
 	app.BankKeeper = bankkeeper.NewBaseKeeper(
 		appCodec,
 		runtime.NewKVStoreService(keys[banktypes.StoreKey]),
