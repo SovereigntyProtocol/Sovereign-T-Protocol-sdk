@@ -1,0 +1,10 @@
+syntax = "proto3";
+package identity.identity;
+
+option go_package = "identity/x/identity/types";
+
+message Address {
+  string owner = 1; 
+  string creator = 2;
+}
+

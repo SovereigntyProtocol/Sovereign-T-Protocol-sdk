@@ -7,6 +7,10 @@ import (
 	_ "github.com/cosmos/cosmos-sdk/x/tokenfactory/module" // import for side-effects
 	tokenfactorymoduletypes "github.com/cosmos/cosmos-sdk/x/tokenfactory/types"
 
+	identitymodulev1 "github.com/cosmos/cosmos-sdk/ssiapi/identity/module"
+	_ "github.com/cosmos/cosmos-sdk/x/identity/module" // import for side-effects
+	identitymoduletypes "github.com/cosmos/cosmos-sdk/x/identity/types"
+
 	"google.golang.org/protobuf/types/known/durationpb"
 
 	runtimev1alpha1 "cosmossdk.io/api/cosmos/app/runtime/v1alpha1"
@@ -126,6 +130,7 @@ var (
 						stakingtypes.ModuleName,
 						authz.ModuleName,
 						tokenfactorymoduletypes.ModuleName,
+						identitymoduletypes.ModuleName,
 					},
 					EndBlockers: []string{
 						crisistypes.ModuleName,
@@ -134,6 +139,7 @@ var (
 						feegrant.ModuleName,
 						group.ModuleName,
 						tokenfactorymoduletypes.ModuleName,
+						identitymoduletypes.ModuleName,
 					},
 					OverrideStoreKeys: []*runtimev1alpha1.StoreKeyConfig{
 						{
@@ -164,6 +170,7 @@ var (
 						vestingtypes.ModuleName,
 						tokenfactorymoduletypes.ModuleName,
 						circuittypes.ModuleName,
+						identitymoduletypes.ModuleName,
 					},
 					// When ExportGenesis is not specified, the export genesis module order
 					// is equal to the init genesis order
@@ -271,6 +278,10 @@ var (
 			{
 				Name:   circuittypes.ModuleName,
 				Config: appconfig.WrapAny(&circuitmodulev1.Module{}),
+			},
+			{
+				Name:   identitymoduletypes.ModuleName,
+				Config: appconfig.WrapAny(&identitymodulev1.Module{}),
 			},
 		},
 	}),
