@@ -109,6 +109,7 @@ import (
 	stakingkeeper "github.com/cosmos/cosmos-sdk/x/staking/keeper"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
 
+	identitymodulekeeper "github.com/cosmos/cosmos-sdk/x/identity/keeper"
 	tokenfactorymodulekeeper "github.com/cosmos/cosmos-sdk/x/tokenfactory/keeper"
 )
 
@@ -173,7 +174,7 @@ type SimApp struct {
 	BasicModuleManager module.BasicManager
 
 	TokenfactoryKeeper tokenfactorymodulekeeper.Keeper
-
+	IdentityKeeper     identitymodulekeeper.Keeper
 	// simulation manager
 	sm *module.SimulationManager
 

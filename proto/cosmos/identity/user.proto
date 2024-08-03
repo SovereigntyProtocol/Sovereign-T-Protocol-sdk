@@ -1,0 +1,12 @@
+syntax = "proto3";
+package identity.identity;
+
+option go_package = "identity/x/identity/types";
+
+message User {
+  string did = 1; 
+  string hash = 2; 
+  string owner = 3; 
+  string creator = 4;
+}
+

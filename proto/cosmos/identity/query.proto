@@ -1,0 +1,87 @@
+syntax = "proto3";
+
+package identity.identity;
+
+import "amino/amino.proto";
+import "gogoproto/gogo.proto";
+import "google/api/annotations.proto";
+import "cosmos/base/query/v1beta1/pagination.proto";
+import "identity/identity/params.proto";
+import "identity/identity/user.proto";
+import "identity/identity/address.proto";
+
+option go_package = "identity/x/identity/types";
+
+// Query defines the gRPC querier service.
+service Query {
+  
+  // Parameters queries the parameters of the module.
+  rpc Params (QueryParamsRequest) returns (QueryParamsResponse) {
+    option (google.api.http).get = "/identity/identity/params";
+  
+  }
+  
+  // Queries a list of User items.
+  rpc User    (QueryGetUserRequest) returns (QueryGetUserResponse) {
+    option (google.api.http).get = "/identity/identity/user/{did}";
+  
+  }
+  rpc UserAll (QueryAllUserRequest) returns (QueryAllUserResponse) {
+    option (google.api.http).get = "/identity/identity/user";
+  
+  }
+  
+  // Queries a list of Address items.
+  rpc Address    (QueryGetAddressRequest) returns (QueryGetAddressResponse) {
+    option (google.api.http).get = "/identity/identity/address/{owner}";
+  
+  }
+  rpc AddressAll (QueryAllAddressRequest) returns (QueryAllAddressResponse) {
+    option (google.api.http).get = "/identity/identity/address";
+  
+  }
+}
+// QueryParamsRequest is request type for the Query/Params RPC method.
+message QueryParamsRequest {}
+
+// QueryParamsResponse is response type for the Query/Params RPC method.
+message QueryParamsResponse {
+  
+  // params holds all the parameters of this module.
+  Params params = 1 [(gogoproto.nullable) = false, (amino.dont_omitempty) = true];
+}
+
+message QueryGetUserRequest {
+  string did = 1;
+}
+
+message QueryGetUserResponse {
+  User user = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryAllUserRequest {
+  cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllUserResponse {
+  repeated User                                   user       = 1 [(gogoproto.nullable) = false];
+           cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
+message QueryGetAddressRequest {
+  string owner = 1;
+}
+
+message QueryGetAddressResponse {
+  Address address = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryAllAddressRequest {
+  cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllAddressResponse {
+  repeated Address                                address    = 1 [(gogoproto.nullable) = false];
+           cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
