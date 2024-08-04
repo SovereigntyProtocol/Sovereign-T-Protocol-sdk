@@ -6,10 +6,10 @@ import "amino/amino.proto";
 import "gogoproto/gogo.proto";
 import "google/api/annotations.proto";
 import "cosmos/base/query/v1beta1/pagination.proto";
-import "tokenfactory/tokenfactory/params.proto";
-import "tokenfactory/tokenfactory/denom.proto";
+import "cosmos/tokenfactory/params.proto";
+import "cosmos/tokenfactory/denom.proto";
 
-option go_package = "tokenfactory/x/tokenfactory/types";
+option go_package = "github.com/cosmos/cosmos-sdk/x/tokenfactory/types";
 
 // Query defines the gRPC querier service.
 service Query {
