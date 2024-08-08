@@ -70,6 +70,11 @@ func (k msgServer) UpdateUser(goCtx context.Context, msg *types.MsgUpdateUser) (
 		return nil, errorsmod.Wrap(sdkerrors.ErrUnauthorized, "incorrect owner")
 	}
 
+	if msg.Hash == valFound.Hash {
+		return nil, errorsmod.Wrap(sdkerrors.ErrUnauthorized, "same hash")
+	}
+
+	msg.Creator = msg.Owner
 	var user = types.User{
 		Creator: msg.Creator,
 		Did:     msg.Did,
@@ -78,6 +83,13 @@ func (k msgServer) UpdateUser(goCtx context.Context, msg *types.MsgUpdateUser) (
 	}
 
 	k.SetUser(ctx, user)
+
+	var address = types.Address{
+		Creator: msg.Creator,
+		Owner:   msg.Owner,
+	}
+
+	k.SetAddress(ctx, address)
 
 	return &types.MsgUpdateUserResponse{}, nil
 }

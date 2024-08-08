@@ -58,12 +58,14 @@ func NewMsgUpdateUser(
 }
 
 func (msg *MsgUpdateUser) ValidateBasic() error {
-	return errorsmod.Wrapf(sdkerrors.ErrUnauthorized, "not allowed")
-	// _, err := sdk.AccAddressFromBech32(msg.Creator)
-	// if err != nil {
-	// 	return errorsmod.Wrapf(sdkerrors.ErrInvalidAddress, "invalid creator address (%s)", err)
-	// }
-	// return nil
+	_, err := sdk.AccAddressFromBech32(msg.Creator)
+	if err != nil {
+		return errorsmod.Wrapf(sdkerrors.ErrInvalidAddress, "invalid creator address (%s)", err)
+	}
+	if msg.Hash == "" {
+		return errorsmod.Wrapf(sdkerrors.ErrInvalidRequest, "invalid user's hash")
+	}
+	return nil
 }
 
 var _ sdk.Msg = &MsgDeleteUser{}
