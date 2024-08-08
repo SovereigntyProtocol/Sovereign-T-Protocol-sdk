@@ -60,7 +60,6 @@ func (am AppModule) AutoCLIOptions() *autocliv1.ModuleOptions {
 					RpcMethod:      "UpdateUser",
 					Use:            "update-user [did] [hash] [owner]",
 					Short:          "Update User",
-					Skip:           true,
 					PositionalArgs: []*autocliv1.PositionalArgDescriptor{{ProtoField: "did"}, {ProtoField: "hash"}, {ProtoField: "owner"}},
 				},
 				{
