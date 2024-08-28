@@ -124,25 +124,26 @@ func (m *MsgUpdateParamsResponse) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_MsgUpdateParamsResponse proto.InternalMessageInfo
 
-type MsgCreateUser struct {
-	Creator string `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
-	Did     string `protobuf:"bytes,2,opt,name=did,proto3" json:"did,omitempty"`
-	Hash    string `protobuf:"bytes,3,opt,name=hash,proto3" json:"hash,omitempty"`
-	Owner   string `protobuf:"bytes,4,opt,name=owner,proto3" json:"owner,omitempty"`
+type MsgCreateId struct {
+	Creator  string `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
+	Did      string `protobuf:"bytes,2,opt,name=did,proto3" json:"did,omitempty"`
+	Hash     string `protobuf:"bytes,3,opt,name=hash,proto3" json:"hash,omitempty"`
+	Owner    string `protobuf:"bytes,4,opt,name=owner,proto3" json:"owner,omitempty"`
+	Username string `protobuf:"bytes,5,opt,name=username,proto3" json:"username,omitempty"`
 }
 
-func (m *MsgCreateUser) Reset()         { *m = MsgCreateUser{} }
-func (m *MsgCreateUser) String() string { return proto.CompactTextString(m) }
-func (*MsgCreateUser) ProtoMessage()    {}
-func (*MsgCreateUser) Descriptor() ([]byte, []int) {
+func (m *MsgCreateId) Reset()         { *m = MsgCreateId{} }
+func (m *MsgCreateId) String() string { return proto.CompactTextString(m) }
+func (*MsgCreateId) ProtoMessage()    {}
+func (*MsgCreateId) Descriptor() ([]byte, []int) {
 	return fileDescriptor_cbb14999eeb35a04, []int{2}
 }
-func (m *MsgCreateUser) XXX_Unmarshal(b []byte) error {
+func (m *MsgCreateId) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *MsgCreateUser) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *MsgCreateId) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_MsgCreateUser.Marshal(b, m, deterministic)
+		return xxx_messageInfo_MsgCreateId.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -152,61 +153,68 @@ func (m *MsgCreateUser) XXX_Marshal(b []byte, deterministic bool) ([]byte, error
 		return b[:n], nil
 	}
 }
-func (m *MsgCreateUser) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_MsgCreateUser.Merge(m, src)
+func (m *MsgCreateId) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgCreateId.Merge(m, src)
 }
-func (m *MsgCreateUser) XXX_Size() int {
+func (m *MsgCreateId) XXX_Size() int {
 	return m.Size()
 }
-func (m *MsgCreateUser) XXX_DiscardUnknown() {
-	xxx_messageInfo_MsgCreateUser.DiscardUnknown(m)
+func (m *MsgCreateId) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgCreateId.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_MsgCreateUser proto.InternalMessageInfo
+var xxx_messageInfo_MsgCreateId proto.InternalMessageInfo
 
-func (m *MsgCreateUser) GetCreator() string {
+func (m *MsgCreateId) GetCreator() string {
 	if m != nil {
 		return m.Creator
 	}
 	return ""
 }
 
-func (m *MsgCreateUser) GetDid() string {
+func (m *MsgCreateId) GetDid() string {
 	if m != nil {
 		return m.Did
 	}
 	return ""
 }
 
-func (m *MsgCreateUser) GetHash() string {
+func (m *MsgCreateId) GetHash() string {
 	if m != nil {
 		return m.Hash
 	}
 	return ""
 }
 
-func (m *MsgCreateUser) GetOwner() string {
+func (m *MsgCreateId) GetOwner() string {
 	if m != nil {
 		return m.Owner
 	}
 	return ""
 }
 
-type MsgCreateUserResponse struct {
+func (m *MsgCreateId) GetUsername() string {
+	if m != nil {
+		return m.Username
+	}
+	return ""
 }
 
-func (m *MsgCreateUserResponse) Reset()         { *m = MsgCreateUserResponse{} }
-func (m *MsgCreateUserResponse) String() string { return proto.CompactTextString(m) }
-func (*MsgCreateUserResponse) ProtoMessage()    {}
-func (*MsgCreateUserResponse) Descriptor() ([]byte, []int) {
+type MsgCreateIdResponse struct {
+}
+
+func (m *MsgCreateIdResponse) Reset()         { *m = MsgCreateIdResponse{} }
+func (m *MsgCreateIdResponse) String() string { return proto.CompactTextString(m) }
+func (*MsgCreateIdResponse) ProtoMessage()    {}
+func (*MsgCreateIdResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_cbb14999eeb35a04, []int{3}
 }
-func (m *MsgCreateUserResponse) XXX_Unmarshal(b []byte) error {
+func (m *MsgCreateIdResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *MsgCreateUserResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *MsgCreateIdResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_MsgCreateUserResponse.Marshal(b, m, deterministic)
+		return xxx_messageInfo_MsgCreateIdResponse.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -216,37 +224,38 @@ func (m *MsgCreateUserResponse) XXX_Marshal(b []byte, deterministic bool) ([]byt
 		return b[:n], nil
 	}
 }
-func (m *MsgCreateUserResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_MsgCreateUserResponse.Merge(m, src)
+func (m *MsgCreateIdResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgCreateIdResponse.Merge(m, src)
 }
-func (m *MsgCreateUserResponse) XXX_Size() int {
+func (m *MsgCreateIdResponse) XXX_Size() int {
 	return m.Size()
 }
-func (m *MsgCreateUserResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_MsgCreateUserResponse.DiscardUnknown(m)
+func (m *MsgCreateIdResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgCreateIdResponse.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_MsgCreateUserResponse proto.InternalMessageInfo
+var xxx_messageInfo_MsgCreateIdResponse proto.InternalMessageInfo
 
-type MsgUpdateUser struct {
-	Creator string `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
-	Did     string `protobuf:"bytes,2,opt,name=did,proto3" json:"did,omitempty"`
-	Hash    string `protobuf:"bytes,3,opt,name=hash,proto3" json:"hash,omitempty"`
-	Owner   string `protobuf:"bytes,4,opt,name=owner,proto3" json:"owner,omitempty"`
+type MsgUpdateId struct {
+	Creator  string `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
+	Did      string `protobuf:"bytes,2,opt,name=did,proto3" json:"did,omitempty"`
+	Hash     string `protobuf:"bytes,3,opt,name=hash,proto3" json:"hash,omitempty"`
+	Owner    string `protobuf:"bytes,4,opt,name=owner,proto3" json:"owner,omitempty"`
+	Username string `protobuf:"bytes,5,opt,name=username,proto3" json:"username,omitempty"`
 }
 
-func (m *MsgUpdateUser) Reset()         { *m = MsgUpdateUser{} }
-func (m *MsgUpdateUser) String() string { return proto.CompactTextString(m) }
-func (*MsgUpdateUser) ProtoMessage()    {}
-func (*MsgUpdateUser) Descriptor() ([]byte, []int) {
+func (m *MsgUpdateId) Reset()         { *m = MsgUpdateId{} }
+func (m *MsgUpdateId) String() string { return proto.CompactTextString(m) }
+func (*MsgUpdateId) ProtoMessage()    {}
+func (*MsgUpdateId) Descriptor() ([]byte, []int) {
 	return fileDescriptor_cbb14999eeb35a04, []int{4}
 }
-func (m *MsgUpdateUser) XXX_Unmarshal(b []byte) error {
+func (m *MsgUpdateId) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *MsgUpdateUser) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *MsgUpdateId) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_MsgUpdateUser.Marshal(b, m, deterministic)
+		return xxx_messageInfo_MsgUpdateId.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -256,61 +265,68 @@ func (m *MsgUpdateUser) XXX_Marshal(b []byte, deterministic bool) ([]byte, error
 		return b[:n], nil
 	}
 }
-func (m *MsgUpdateUser) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_MsgUpdateUser.Merge(m, src)
+func (m *MsgUpdateId) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgUpdateId.Merge(m, src)
 }
-func (m *MsgUpdateUser) XXX_Size() int {
+func (m *MsgUpdateId) XXX_Size() int {
 	return m.Size()
 }
-func (m *MsgUpdateUser) XXX_DiscardUnknown() {
-	xxx_messageInfo_MsgUpdateUser.DiscardUnknown(m)
+func (m *MsgUpdateId) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgUpdateId.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_MsgUpdateUser proto.InternalMessageInfo
+var xxx_messageInfo_MsgUpdateId proto.InternalMessageInfo
 
-func (m *MsgUpdateUser) GetCreator() string {
+func (m *MsgUpdateId) GetCreator() string {
 	if m != nil {
 		return m.Creator
 	}
 	return ""
 }
 
-func (m *MsgUpdateUser) GetDid() string {
+func (m *MsgUpdateId) GetDid() string {
 	if m != nil {
 		return m.Did
 	}
 	return ""
 }
 
-func (m *MsgUpdateUser) GetHash() string {
+func (m *MsgUpdateId) GetHash() string {
 	if m != nil {
 		return m.Hash
 	}
 	return ""
 }
 
-func (m *MsgUpdateUser) GetOwner() string {
+func (m *MsgUpdateId) GetOwner() string {
 	if m != nil {
 		return m.Owner
 	}
 	return ""
 }
 
-type MsgUpdateUserResponse struct {
+func (m *MsgUpdateId) GetUsername() string {
+	if m != nil {
+		return m.Username
+	}
+	return ""
 }
 
-func (m *MsgUpdateUserResponse) Reset()         { *m = MsgUpdateUserResponse{} }
-func (m *MsgUpdateUserResponse) String() string { return proto.CompactTextString(m) }
-func (*MsgUpdateUserResponse) ProtoMessage()    {}
-func (*MsgUpdateUserResponse) Descriptor() ([]byte, []int) {
+type MsgUpdateIdResponse struct {
+}
+
+func (m *MsgUpdateIdResponse) Reset()         { *m = MsgUpdateIdResponse{} }
+func (m *MsgUpdateIdResponse) String() string { return proto.CompactTextString(m) }
+func (*MsgUpdateIdResponse) ProtoMessage()    {}
+func (*MsgUpdateIdResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_cbb14999eeb35a04, []int{5}
 }
-func (m *MsgUpdateUserResponse) XXX_Unmarshal(b []byte) error {
+func (m *MsgUpdateIdResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *MsgUpdateUserResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *MsgUpdateIdResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_MsgUpdateUserResponse.Marshal(b, m, deterministic)
+		return xxx_messageInfo_MsgUpdateIdResponse.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -320,35 +336,35 @@ func (m *MsgUpdateUserResponse) XXX_Marshal(b []byte, deterministic bool) ([]byt
 		return b[:n], nil
 	}
 }
-func (m *MsgUpdateUserResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_MsgUpdateUserResponse.Merge(m, src)
+func (m *MsgUpdateIdResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgUpdateIdResponse.Merge(m, src)
 }
-func (m *MsgUpdateUserResponse) XXX_Size() int {
+func (m *MsgUpdateIdResponse) XXX_Size() int {
 	return m.Size()
 }
-func (m *MsgUpdateUserResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_MsgUpdateUserResponse.DiscardUnknown(m)
+func (m *MsgUpdateIdResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgUpdateIdResponse.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_MsgUpdateUserResponse proto.InternalMessageInfo
+var xxx_messageInfo_MsgUpdateIdResponse proto.InternalMessageInfo
 
-type MsgDeleteUser struct {
+type MsgDeleteId struct {
 	Creator string `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
 	Did     string `protobuf:"bytes,2,opt,name=did,proto3" json:"did,omitempty"`
 }
 
-func (m *MsgDeleteUser) Reset()         { *m = MsgDeleteUser{} }
-func (m *MsgDeleteUser) String() string { return proto.CompactTextString(m) }
-func (*MsgDeleteUser) ProtoMessage()    {}
-func (*MsgDeleteUser) Descriptor() ([]byte, []int) {
+func (m *MsgDeleteId) Reset()         { *m = MsgDeleteId{} }
+func (m *MsgDeleteId) String() string { return proto.CompactTextString(m) }
+func (*MsgDeleteId) ProtoMessage()    {}
+func (*MsgDeleteId) Descriptor() ([]byte, []int) {
 	return fileDescriptor_cbb14999eeb35a04, []int{6}
 }
-func (m *MsgDeleteUser) XXX_Unmarshal(b []byte) error {
+func (m *MsgDeleteId) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *MsgDeleteUser) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *MsgDeleteId) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_MsgDeleteUser.Marshal(b, m, deterministic)
+		return xxx_messageInfo_MsgDeleteId.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -358,47 +374,47 @@ func (m *MsgDeleteUser) XXX_Marshal(b []byte, deterministic bool) ([]byte, error
 		return b[:n], nil
 	}
 }
-func (m *MsgDeleteUser) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_MsgDeleteUser.Merge(m, src)
+func (m *MsgDeleteId) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgDeleteId.Merge(m, src)
 }
-func (m *MsgDeleteUser) XXX_Size() int {
+func (m *MsgDeleteId) XXX_Size() int {
 	return m.Size()
 }
-func (m *MsgDeleteUser) XXX_DiscardUnknown() {
-	xxx_messageInfo_MsgDeleteUser.DiscardUnknown(m)
+func (m *MsgDeleteId) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgDeleteId.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_MsgDeleteUser proto.InternalMessageInfo
+var xxx_messageInfo_MsgDeleteId proto.InternalMessageInfo
 
-func (m *MsgDeleteUser) GetCreator() string {
+func (m *MsgDeleteId) GetCreator() string {
 	if m != nil {
 		return m.Creator
 	}
 	return ""
 }
 
-func (m *MsgDeleteUser) GetDid() string {
+func (m *MsgDeleteId) GetDid() string {
 	if m != nil {
 		return m.Did
 	}
 	return ""
 }
 
-type MsgDeleteUserResponse struct {
+type MsgDeleteIdResponse struct {
 }
 
-func (m *MsgDeleteUserResponse) Reset()         { *m = MsgDeleteUserResponse{} }
-func (m *MsgDeleteUserResponse) String() string { return proto.CompactTextString(m) }
-func (*MsgDeleteUserResponse) ProtoMessage()    {}
-func (*MsgDeleteUserResponse) Descriptor() ([]byte, []int) {
+func (m *MsgDeleteIdResponse) Reset()         { *m = MsgDeleteIdResponse{} }
+func (m *MsgDeleteIdResponse) String() string { return proto.CompactTextString(m) }
+func (*MsgDeleteIdResponse) ProtoMessage()    {}
+func (*MsgDeleteIdResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_cbb14999eeb35a04, []int{7}
 }
-func (m *MsgDeleteUserResponse) XXX_Unmarshal(b []byte) error {
+func (m *MsgDeleteIdResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *MsgDeleteUserResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *MsgDeleteIdResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_MsgDeleteUserResponse.Marshal(b, m, deterministic)
+		return xxx_messageInfo_MsgDeleteIdResponse.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -408,339 +424,65 @@ func (m *MsgDeleteUserResponse) XXX_Marshal(b []byte, deterministic bool) ([]byt
 		return b[:n], nil
 	}
 }
-func (m *MsgDeleteUserResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_MsgDeleteUserResponse.Merge(m, src)
+func (m *MsgDeleteIdResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgDeleteIdResponse.Merge(m, src)
 }
-func (m *MsgDeleteUserResponse) XXX_Size() int {
+func (m *MsgDeleteIdResponse) XXX_Size() int {
 	return m.Size()
 }
-func (m *MsgDeleteUserResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_MsgDeleteUserResponse.DiscardUnknown(m)
+func (m *MsgDeleteIdResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgDeleteIdResponse.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_MsgDeleteUserResponse proto.InternalMessageInfo
-
-type MsgCreateAddress struct {
-	Creator string `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
-	Owner   string `protobuf:"bytes,2,opt,name=owner,proto3" json:"owner,omitempty"`
-}
-
-func (m *MsgCreateAddress) Reset()         { *m = MsgCreateAddress{} }
-func (m *MsgCreateAddress) String() string { return proto.CompactTextString(m) }
-func (*MsgCreateAddress) ProtoMessage()    {}
-func (*MsgCreateAddress) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cbb14999eeb35a04, []int{8}
-}
-func (m *MsgCreateAddress) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
-func (m *MsgCreateAddress) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_MsgCreateAddress.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
-}
-func (m *MsgCreateAddress) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_MsgCreateAddress.Merge(m, src)
-}
-func (m *MsgCreateAddress) XXX_Size() int {
-	return m.Size()
-}
-func (m *MsgCreateAddress) XXX_DiscardUnknown() {
-	xxx_messageInfo_MsgCreateAddress.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_MsgCreateAddress proto.InternalMessageInfo
-
-func (m *MsgCreateAddress) GetCreator() string {
-	if m != nil {
-		return m.Creator
-	}
-	return ""
-}
-
-func (m *MsgCreateAddress) GetOwner() string {
-	if m != nil {
-		return m.Owner
-	}
-	return ""
-}
-
-type MsgCreateAddressResponse struct {
-}
-
-func (m *MsgCreateAddressResponse) Reset()         { *m = MsgCreateAddressResponse{} }
-func (m *MsgCreateAddressResponse) String() string { return proto.CompactTextString(m) }
-func (*MsgCreateAddressResponse) ProtoMessage()    {}
-func (*MsgCreateAddressResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cbb14999eeb35a04, []int{9}
-}
-func (m *MsgCreateAddressResponse) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
-func (m *MsgCreateAddressResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_MsgCreateAddressResponse.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
-}
-func (m *MsgCreateAddressResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_MsgCreateAddressResponse.Merge(m, src)
-}
-func (m *MsgCreateAddressResponse) XXX_Size() int {
-	return m.Size()
-}
-func (m *MsgCreateAddressResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_MsgCreateAddressResponse.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_MsgCreateAddressResponse proto.InternalMessageInfo
-
-type MsgUpdateAddress struct {
-	Creator string `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
-	Owner   string `protobuf:"bytes,2,opt,name=owner,proto3" json:"owner,omitempty"`
-}
-
-func (m *MsgUpdateAddress) Reset()         { *m = MsgUpdateAddress{} }
-func (m *MsgUpdateAddress) String() string { return proto.CompactTextString(m) }
-func (*MsgUpdateAddress) ProtoMessage()    {}
-func (*MsgUpdateAddress) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cbb14999eeb35a04, []int{10}
-}
-func (m *MsgUpdateAddress) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
-func (m *MsgUpdateAddress) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_MsgUpdateAddress.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
-}
-func (m *MsgUpdateAddress) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_MsgUpdateAddress.Merge(m, src)
-}
-func (m *MsgUpdateAddress) XXX_Size() int {
-	return m.Size()
-}
-func (m *MsgUpdateAddress) XXX_DiscardUnknown() {
-	xxx_messageInfo_MsgUpdateAddress.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_MsgUpdateAddress proto.InternalMessageInfo
-
-func (m *MsgUpdateAddress) GetCreator() string {
-	if m != nil {
-		return m.Creator
-	}
-	return ""
-}
-
-func (m *MsgUpdateAddress) GetOwner() string {
-	if m != nil {
-		return m.Owner
-	}
-	return ""
-}
-
-type MsgUpdateAddressResponse struct {
-}
-
-func (m *MsgUpdateAddressResponse) Reset()         { *m = MsgUpdateAddressResponse{} }
-func (m *MsgUpdateAddressResponse) String() string { return proto.CompactTextString(m) }
-func (*MsgUpdateAddressResponse) ProtoMessage()    {}
-func (*MsgUpdateAddressResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cbb14999eeb35a04, []int{11}
-}
-func (m *MsgUpdateAddressResponse) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
-func (m *MsgUpdateAddressResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_MsgUpdateAddressResponse.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
-}
-func (m *MsgUpdateAddressResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_MsgUpdateAddressResponse.Merge(m, src)
-}
-func (m *MsgUpdateAddressResponse) XXX_Size() int {
-	return m.Size()
-}
-func (m *MsgUpdateAddressResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_MsgUpdateAddressResponse.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_MsgUpdateAddressResponse proto.InternalMessageInfo
-
-type MsgDeleteAddress struct {
-	Creator string `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
-	Owner   string `protobuf:"bytes,2,opt,name=owner,proto3" json:"owner,omitempty"`
-}
-
-func (m *MsgDeleteAddress) Reset()         { *m = MsgDeleteAddress{} }
-func (m *MsgDeleteAddress) String() string { return proto.CompactTextString(m) }
-func (*MsgDeleteAddress) ProtoMessage()    {}
-func (*MsgDeleteAddress) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cbb14999eeb35a04, []int{12}
-}
-func (m *MsgDeleteAddress) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
-func (m *MsgDeleteAddress) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_MsgDeleteAddress.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
-}
-func (m *MsgDeleteAddress) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_MsgDeleteAddress.Merge(m, src)
-}
-func (m *MsgDeleteAddress) XXX_Size() int {
-	return m.Size()
-}
-func (m *MsgDeleteAddress) XXX_DiscardUnknown() {
-	xxx_messageInfo_MsgDeleteAddress.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_MsgDeleteAddress proto.InternalMessageInfo
-
-func (m *MsgDeleteAddress) GetCreator() string {
-	if m != nil {
-		return m.Creator
-	}
-	return ""
-}
-
-func (m *MsgDeleteAddress) GetOwner() string {
-	if m != nil {
-		return m.Owner
-	}
-	return ""
-}
-
-type MsgDeleteAddressResponse struct {
-}
-
-func (m *MsgDeleteAddressResponse) Reset()         { *m = MsgDeleteAddressResponse{} }
-func (m *MsgDeleteAddressResponse) String() string { return proto.CompactTextString(m) }
-func (*MsgDeleteAddressResponse) ProtoMessage()    {}
-func (*MsgDeleteAddressResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cbb14999eeb35a04, []int{13}
-}
-func (m *MsgDeleteAddressResponse) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
-func (m *MsgDeleteAddressResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_MsgDeleteAddressResponse.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
-}
-func (m *MsgDeleteAddressResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_MsgDeleteAddressResponse.Merge(m, src)
-}
-func (m *MsgDeleteAddressResponse) XXX_Size() int {
-	return m.Size()
-}
-func (m *MsgDeleteAddressResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_MsgDeleteAddressResponse.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_MsgDeleteAddressResponse proto.InternalMessageInfo
+var xxx_messageInfo_MsgDeleteIdResponse proto.InternalMessageInfo
 
 func init() {
 	proto.RegisterType((*MsgUpdateParams)(nil), "identity.identity.MsgUpdateParams")
 	proto.RegisterType((*MsgUpdateParamsResponse)(nil), "identity.identity.MsgUpdateParamsResponse")
-	proto.RegisterType((*MsgCreateUser)(nil), "identity.identity.MsgCreateUser")
-	proto.RegisterType((*MsgCreateUserResponse)(nil), "identity.identity.MsgCreateUserResponse")
-	proto.RegisterType((*MsgUpdateUser)(nil), "identity.identity.MsgUpdateUser")
-	proto.RegisterType((*MsgUpdateUserResponse)(nil), "identity.identity.MsgUpdateUserResponse")
-	proto.RegisterType((*MsgDeleteUser)(nil), "identity.identity.MsgDeleteUser")
-	proto.RegisterType((*MsgDeleteUserResponse)(nil), "identity.identity.MsgDeleteUserResponse")
-	proto.RegisterType((*MsgCreateAddress)(nil), "identity.identity.MsgCreateAddress")
-	proto.RegisterType((*MsgCreateAddressResponse)(nil), "identity.identity.MsgCreateAddressResponse")
-	proto.RegisterType((*MsgUpdateAddress)(nil), "identity.identity.MsgUpdateAddress")
-	proto.RegisterType((*MsgUpdateAddressResponse)(nil), "identity.identity.MsgUpdateAddressResponse")
-	proto.RegisterType((*MsgDeleteAddress)(nil), "identity.identity.MsgDeleteAddress")
-	proto.RegisterType((*MsgDeleteAddressResponse)(nil), "identity.identity.MsgDeleteAddressResponse")
+	proto.RegisterType((*MsgCreateId)(nil), "identity.identity.MsgCreateId")
+	proto.RegisterType((*MsgCreateIdResponse)(nil), "identity.identity.MsgCreateIdResponse")
+	proto.RegisterType((*MsgUpdateId)(nil), "identity.identity.MsgUpdateId")
+	proto.RegisterType((*MsgUpdateIdResponse)(nil), "identity.identity.MsgUpdateIdResponse")
+	proto.RegisterType((*MsgDeleteId)(nil), "identity.identity.MsgDeleteId")
+	proto.RegisterType((*MsgDeleteIdResponse)(nil), "identity.identity.MsgDeleteIdResponse")
 }
 
 func init() { proto.RegisterFile("identity/identity/tx.proto", fileDescriptor_cbb14999eeb35a04) }
 
 var fileDescriptor_cbb14999eeb35a04 = []byte{
-	// 570 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xbc, 0x55, 0xbf, 0x6f, 0xd3, 0x40,
-	0x18, 0x8d, 0xdb, 0xa6, 0x28, 0x1f, 0xad, 0x68, 0x4f, 0x41, 0x71, 0x2c, 0xe4, 0x46, 0xce, 0x12,
-	0x05, 0x11, 0x8b, 0x56, 0xea, 0x50, 0xb1, 0x10, 0x58, 0x18, 0x22, 0x55, 0x46, 0x95, 0x10, 0x03,
-	0xc8, 0xd4, 0x27, 0xc7, 0x12, 0xf1, 0x59, 0x77, 0x57, 0x68, 0x36, 0xc4, 0xc8, 0xc4, 0xff, 0xc0,
-	0xc2, 0x98, 0x81, 0x9d, 0xb5, 0x63, 0xc5, 0xc4, 0x84, 0x50, 0x32, 0xe4, 0xdf, 0x40, 0xf6, 0xf9,
-	0xb7, 0x1d, 0x07, 0xa4, 0x8a, 0xa5, 0xfd, 0x7e, 0xdd, 0x7b, 0xef, 0x3b, 0xbd, 0x73, 0x40, 0x71,
-	0x2c, 0xec, 0x72, 0x87, 0x4f, 0xf5, 0x38, 0xe0, 0x97, 0x03, 0x8f, 0x12, 0x4e, 0xd0, 0x7e, 0x54,
-	0x1a, 0x44, 0x81, 0xb2, 0x6f, 0x4e, 0x1c, 0x97, 0xe8, 0xc1, 0x5f, 0x31, 0xa5, 0xb4, 0xce, 0x09,
-	0x9b, 0x10, 0xa6, 0x4f, 0x98, 0xad, 0xbf, 0x7b, 0xe8, 0xff, 0x0b, 0x1b, 0x6d, 0xd1, 0x78, 0x1d,
-	0x64, 0xba, 0x48, 0xc2, 0x56, 0xd3, 0x26, 0x36, 0x11, 0x75, 0x3f, 0x0a, 0xab, 0x6a, 0x51, 0x8b,
-	0x67, 0x52, 0x73, 0x12, 0x9d, 0xba, 0x57, 0xec, 0x5f, 0x30, 0x4c, 0xc3, 0xee, 0x41, 0xb1, 0x6b,
-	0x5a, 0x16, 0xc5, 0x2c, 0x3c, 0xae, 0x7d, 0x97, 0xe0, 0xce, 0x88, 0xd9, 0x67, 0x9e, 0x65, 0x72,
-	0x7c, 0x1a, 0x00, 0xa3, 0x63, 0x68, 0x98, 0x17, 0x7c, 0x4c, 0xa8, 0xc3, 0xa7, 0xb2, 0xd4, 0x91,
-	0x7a, 0x8d, 0xa1, 0xfc, 0xe3, 0xdb, 0x83, 0x66, 0xa8, 0xf6, 0xb1, 0x00, 0x78, 0xce, 0xa9, 0xe3,
-	0xda, 0x46, 0x32, 0x8a, 0x1e, 0xc1, 0xb6, 0x90, 0x26, 0x6f, 0x74, 0xa4, 0xde, 0xed, 0xc3, 0xf6,
-	0xa0, 0x70, 0x57, 0x03, 0x41, 0x31, 0x6c, 0x5c, 0xfd, 0x3a, 0xa8, 0x7d, 0x5d, 0xce, 0xfa, 0x92,
-	0x11, 0x9e, 0x39, 0x39, 0xfe, 0xb8, 0x9c, 0xf5, 0x13, 0xb4, 0x4f, 0xcb, 0x59, 0xbf, 0x1b, 0x8b,
-	0xbe, 0x4c, 0xf4, 0xe7, 0xd4, 0x6a, 0x6d, 0x68, 0xe5, 0x4a, 0x06, 0x66, 0x1e, 0x71, 0x19, 0xd6,
-	0x18, 0xec, 0x8e, 0x98, 0xfd, 0x84, 0x62, 0x93, 0xe3, 0x33, 0x86, 0x29, 0x92, 0xe1, 0xd6, 0xb9,
-	0x9f, 0x11, 0x2a, 0xf6, 0x32, 0xa2, 0x14, 0xed, 0xc1, 0xa6, 0xe5, 0x58, 0x81, 0xf0, 0x86, 0xe1,
-	0x87, 0x08, 0xc1, 0xd6, 0xd8, 0x64, 0x63, 0x79, 0x33, 0x28, 0x05, 0x31, 0x6a, 0x42, 0x9d, 0xbc,
-	0x77, 0x31, 0x95, 0xb7, 0x82, 0xa2, 0x48, 0x4e, 0x76, 0x7c, 0xe5, 0x11, 0x92, 0xd6, 0x82, 0xbb,
-	0x19, 0xd2, 0x9c, 0x1a, 0x21, 0xf4, 0x3f, 0xab, 0x49, 0x48, 0x63, 0x35, 0xcf, 0x02, 0x35, 0x4f,
-	0xf1, 0x5b, 0xfc, 0xef, 0x6a, 0x4a, 0x39, 0x12, 0xa8, 0x98, 0xe3, 0x14, 0xf6, 0xe2, 0xab, 0x08,
-	0x5d, 0x53, 0x41, 0x13, 0xaf, 0xb3, 0xb1, 0x7a, 0x1d, 0x05, 0xe4, 0x3c, 0x62, 0x8e, 0x4d, 0xac,
-	0x7a, 0x93, 0x6c, 0x19, 0xc4, 0x1c, 0x9b, 0x58, 0xfa, 0x26, 0xd9, 0x32, 0x88, 0x11, 0xdb, 0xe1,
-	0x97, 0x3a, 0x6c, 0x8e, 0x98, 0x8d, 0x5e, 0xc1, 0x4e, 0xe6, 0xa9, 0x6a, 0x25, 0x4f, 0x2c, 0xf7,
-	0x1a, 0x94, 0xfe, 0xfa, 0x99, 0x88, 0x07, 0xbd, 0x00, 0x48, 0x3d, 0x97, 0x4e, 0xf9, 0xc9, 0x64,
-	0x42, 0xe9, 0xad, 0x9b, 0x48, 0x23, 0xa7, 0xac, 0xdf, 0xa9, 0xd2, 0x54, 0x85, 0x5c, 0x74, 0xb2,
-	0x8f, 0x9c, 0xb2, 0xf1, 0x0a, 0xe4, 0x64, 0x62, 0x15, 0x72, 0xd1, 0xbf, 0xc8, 0x84, 0xdd, 0xac,
-	0x79, 0xbb, 0x55, 0xeb, 0x86, 0x43, 0xca, 0xfd, 0xbf, 0x18, 0x4a, 0x53, 0x64, 0x1d, 0xdb, 0xad,
-	0xda, 0x7b, 0x0d, 0x45, 0xa9, 0x53, 0x7d, 0x8a, 0xac, 0x4d, 0xbb, 0x55, 0x17, 0xb0, 0x86, 0xa2,
-	0xd4, 0x9e, 0x4a, 0xfd, 0x83, 0xff, 0x29, 0x1f, 0x1e, 0x5d, 0xcd, 0x55, 0xe9, 0x7a, 0xae, 0x4a,
-	0xbf, 0xe7, 0xaa, 0xf4, 0x79, 0xa1, 0xd6, 0xae, 0x17, 0x6a, 0xed, 0xe7, 0x42, 0xad, 0xbd, 0x6c,
-	0x97, 0x7d, 0xc9, 0xf9, 0xd4, 0xc3, 0xec, 0xcd, 0x76, 0xf0, 0x43, 0x74, 0xf4, 0x27, 0x00, 0x00,
-	0xff, 0xff, 0xa6, 0x45, 0x86, 0x3b, 0x75, 0x07, 0x00, 0x00,
+	// 499 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x92, 0xca, 0x4c, 0x49, 0xcd,
+	0x2b, 0xc9, 0x2c, 0xa9, 0xd4, 0x87, 0x33, 0x4a, 0x2a, 0xf4, 0x0a, 0x8a, 0xf2, 0x4b, 0xf2, 0x85,
+	0x04, 0x61, 0x42, 0x7a, 0x30, 0x86, 0x94, 0x60, 0x62, 0x6e, 0x66, 0x5e, 0xbe, 0x3e, 0x98, 0x84,
+	0xa8, 0x92, 0x12, 0x4f, 0xce, 0x2f, 0xce, 0xcd, 0x2f, 0xd6, 0xcf, 0x2d, 0x4e, 0xd7, 0x2f, 0x33,
+	0x04, 0x51, 0x50, 0x09, 0x49, 0x88, 0x44, 0x3c, 0x98, 0xa7, 0x0f, 0xe1, 0x40, 0xa5, 0x44, 0xd2,
+	0xf3, 0xd3, 0xf3, 0x21, 0xe2, 0x20, 0x16, 0x54, 0x54, 0x0e, 0xd3, 0x2d, 0x05, 0x89, 0x45, 0x89,
+	0xb9, 0x30, 0x5d, 0x58, 0xdc, 0x9a, 0x99, 0x02, 0x91, 0x53, 0xda, 0xcf, 0xc8, 0xc5, 0xef, 0x5b,
+	0x9c, 0x1e, 0x5a, 0x90, 0x92, 0x58, 0x92, 0x1a, 0x00, 0xd6, 0x25, 0x64, 0xc6, 0xc5, 0x99, 0x58,
+	0x5a, 0x92, 0x91, 0x5f, 0x94, 0x59, 0x52, 0x29, 0xc1, 0xa8, 0xc0, 0xa8, 0xc1, 0xe9, 0x24, 0x71,
+	0x69, 0x8b, 0xae, 0x08, 0xd4, 0x29, 0x8e, 0x29, 0x29, 0x45, 0xa9, 0xc5, 0xc5, 0xc1, 0x25, 0x45,
+	0x99, 0x79, 0xe9, 0x41, 0x08, 0xa5, 0x42, 0x36, 0x5c, 0x6c, 0x10, 0x7b, 0x25, 0x98, 0x14, 0x18,
+	0x35, 0xb8, 0x8d, 0x24, 0xf5, 0x30, 0x02, 0x42, 0x0f, 0x62, 0x85, 0x13, 0xe7, 0x89, 0x7b, 0xf2,
+	0x0c, 0x2b, 0x9e, 0x6f, 0xd0, 0x62, 0x0c, 0x82, 0xea, 0xb1, 0x32, 0x6b, 0x7a, 0xbe, 0x41, 0x0b,
+	0x61, 0x5a, 0xd7, 0xf3, 0x0d, 0x5a, 0xca, 0x70, 0xf7, 0x56, 0x20, 0x9c, 0x8e, 0xe6, 0x5a, 0x25,
+	0x49, 0x2e, 0x71, 0x34, 0xa1, 0xa0, 0xd4, 0xe2, 0x82, 0xfc, 0xbc, 0xe2, 0x54, 0xa5, 0x5e, 0x46,
+	0x2e, 0x6e, 0xdf, 0xe2, 0x74, 0xe7, 0xa2, 0xd4, 0xc4, 0x92, 0x54, 0xcf, 0x14, 0x21, 0x09, 0x2e,
+	0xf6, 0x64, 0x10, 0x3b, 0xbf, 0x08, 0xe2, 0xad, 0x20, 0x18, 0x57, 0x48, 0x80, 0x8b, 0x39, 0x25,
+	0x33, 0x05, 0xec, 0x6e, 0xce, 0x20, 0x10, 0x53, 0x48, 0x88, 0x8b, 0x25, 0x23, 0xb1, 0x38, 0x43,
+	0x82, 0x19, 0x2c, 0x04, 0x66, 0x0b, 0x89, 0x70, 0xb1, 0xe6, 0x97, 0xe7, 0xa5, 0x16, 0x49, 0xb0,
+	0x80, 0x05, 0x21, 0x1c, 0x21, 0x29, 0x2e, 0x8e, 0xd2, 0xe2, 0xd4, 0xa2, 0xbc, 0xc4, 0xdc, 0x54,
+	0x09, 0x56, 0xb0, 0x04, 0x9c, 0x6f, 0xc5, 0x03, 0xf2, 0x14, 0xcc, 0x16, 0x25, 0x51, 0x2e, 0x61,
+	0x24, 0xe7, 0xa0, 0x3b, 0x13, 0xe2, 0x85, 0x41, 0xe3, 0x4c, 0x98, 0x73, 0xe0, 0xce, 0x74, 0x07,
+	0xbb, 0xd2, 0x25, 0x35, 0x27, 0x95, 0x54, 0x57, 0x62, 0x35, 0x1f, 0x66, 0x10, 0xcc, 0x7c, 0xa3,
+	0x17, 0x4c, 0x5c, 0xcc, 0xbe, 0xc5, 0xe9, 0x42, 0x71, 0x5c, 0x3c, 0x28, 0xc9, 0x51, 0x09, 0x4b,
+	0x32, 0x42, 0x8b, 0x71, 0x29, 0x2d, 0xc2, 0x6a, 0x60, 0xf6, 0x08, 0x05, 0x71, 0x71, 0xc0, 0x53,
+	0x84, 0x1c, 0x76, 0x7d, 0x30, 0x79, 0x29, 0x35, 0xfc, 0xf2, 0xc8, 0x66, 0xc2, 0xa3, 0x4f, 0x0e,
+	0x9f, 0x5b, 0x70, 0x9b, 0x89, 0x1e, 0xde, 0x20, 0x33, 0xe1, 0x81, 0x8d, 0xc3, 0x4c, 0x98, 0x3c,
+	0x2e, 0x33, 0xd1, 0xc3, 0x58, 0x8a, 0xb5, 0x01, 0x94, 0xe7, 0x9c, 0x8c, 0x4f, 0x3c, 0x92, 0x63,
+	0xbc, 0xf0, 0x48, 0x8e, 0xf1, 0xc1, 0x23, 0x39, 0xc6, 0x09, 0x8f, 0xe5, 0x18, 0x2e, 0x3c, 0x96,
+	0x63, 0xb8, 0xf1, 0x58, 0x8e, 0x21, 0x4a, 0x12, 0x5b, 0x96, 0x2b, 0xa9, 0x2c, 0x48, 0x2d, 0x4e,
+	0x62, 0x03, 0x97, 0x18, 0xc6, 0x80, 0x00, 0x00, 0x00, 0xff, 0xff, 0xf0, 0xd7, 0xd1, 0x22, 0xfb,
+	0x04, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -758,12 +500,9 @@ type MsgClient interface {
 	// UpdateParams defines a (governance) operation for updating the module
 	// parameters. The authority defaults to the x/gov module account.
 	UpdateParams(ctx context.Context, in *MsgUpdateParams, opts ...grpc.CallOption) (*MsgUpdateParamsResponse, error)
-	CreateUser(ctx context.Context, in *MsgCreateUser, opts ...grpc.CallOption) (*MsgCreateUserResponse, error)
-	UpdateUser(ctx context.Context, in *MsgUpdateUser, opts ...grpc.CallOption) (*MsgUpdateUserResponse, error)
-	DeleteUser(ctx context.Context, in *MsgDeleteUser, opts ...grpc.CallOption) (*MsgDeleteUserResponse, error)
-	CreateAddress(ctx context.Context, in *MsgCreateAddress, opts ...grpc.CallOption) (*MsgCreateAddressResponse, error)
-	UpdateAddress(ctx context.Context, in *MsgUpdateAddress, opts ...grpc.CallOption) (*MsgUpdateAddressResponse, error)
-	DeleteAddress(ctx context.Context, in *MsgDeleteAddress, opts ...grpc.CallOption) (*MsgDeleteAddressResponse, error)
+	CreateId(ctx context.Context, in *MsgCreateId, opts ...grpc.CallOption) (*MsgCreateIdResponse, error)
+	UpdateId(ctx context.Context, in *MsgUpdateId, opts ...grpc.CallOption) (*MsgUpdateIdResponse, error)
+	DeleteId(ctx context.Context, in *MsgDeleteId, opts ...grpc.CallOption) (*MsgDeleteIdResponse, error)
 }
 
 type msgClient struct {
@@ -783,54 +522,27 @@ func (c *msgClient) UpdateParams(ctx context.Context, in *MsgUpdateParams, opts 
 	return out, nil
 }
 
-func (c *msgClient) CreateUser(ctx context.Context, in *MsgCreateUser, opts ...grpc.CallOption) (*MsgCreateUserResponse, error) {
-	out := new(MsgCreateUserResponse)
-	err := c.cc.Invoke(ctx, "/identity.identity.Msg/CreateUser", in, out, opts...)
+func (c *msgClient) CreateId(ctx context.Context, in *MsgCreateId, opts ...grpc.CallOption) (*MsgCreateIdResponse, error) {
+	out := new(MsgCreateIdResponse)
+	err := c.cc.Invoke(ctx, "/identity.identity.Msg/CreateId", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *msgClient) UpdateUser(ctx context.Context, in *MsgUpdateUser, opts ...grpc.CallOption) (*MsgUpdateUserResponse, error) {
-	out := new(MsgUpdateUserResponse)
-	err := c.cc.Invoke(ctx, "/identity.identity.Msg/UpdateUser", in, out, opts...)
+func (c *msgClient) UpdateId(ctx context.Context, in *MsgUpdateId, opts ...grpc.CallOption) (*MsgUpdateIdResponse, error) {
+	out := new(MsgUpdateIdResponse)
+	err := c.cc.Invoke(ctx, "/identity.identity.Msg/UpdateId", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *msgClient) DeleteUser(ctx context.Context, in *MsgDeleteUser, opts ...grpc.CallOption) (*MsgDeleteUserResponse, error) {
-	out := new(MsgDeleteUserResponse)
-	err := c.cc.Invoke(ctx, "/identity.identity.Msg/DeleteUser", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *msgClient) CreateAddress(ctx context.Context, in *MsgCreateAddress, opts ...grpc.CallOption) (*MsgCreateAddressResponse, error) {
-	out := new(MsgCreateAddressResponse)
-	err := c.cc.Invoke(ctx, "/identity.identity.Msg/CreateAddress", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *msgClient) UpdateAddress(ctx context.Context, in *MsgUpdateAddress, opts ...grpc.CallOption) (*MsgUpdateAddressResponse, error) {
-	out := new(MsgUpdateAddressResponse)
-	err := c.cc.Invoke(ctx, "/identity.identity.Msg/UpdateAddress", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *msgClient) DeleteAddress(ctx context.Context, in *MsgDeleteAddress, opts ...grpc.CallOption) (*MsgDeleteAddressResponse, error) {
-	out := new(MsgDeleteAddressResponse)
-	err := c.cc.Invoke(ctx, "/identity.identity.Msg/DeleteAddress", in, out, opts...)
+func (c *msgClient) DeleteId(ctx context.Context, in *MsgDeleteId, opts ...grpc.CallOption) (*MsgDeleteIdResponse, error) {
+	out := new(MsgDeleteIdResponse)
+	err := c.cc.Invoke(ctx, "/identity.identity.Msg/DeleteId", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -842,12 +554,9 @@ type MsgServer interface {
 	// UpdateParams defines a (governance) operation for updating the module
 	// parameters. The authority defaults to the x/gov module account.
 	UpdateParams(context.Context, *MsgUpdateParams) (*MsgUpdateParamsResponse, error)
-	CreateUser(context.Context, *MsgCreateUser) (*MsgCreateUserResponse, error)
-	UpdateUser(context.Context, *MsgUpdateUser) (*MsgUpdateUserResponse, error)
-	DeleteUser(context.Context, *MsgDeleteUser) (*MsgDeleteUserResponse, error)
-	CreateAddress(context.Context, *MsgCreateAddress) (*MsgCreateAddressResponse, error)
-	UpdateAddress(context.Context, *MsgUpdateAddress) (*MsgUpdateAddressResponse, error)
-	DeleteAddress(context.Context, *MsgDeleteAddress) (*MsgDeleteAddressResponse, error)
+	CreateId(context.Context, *MsgCreateId) (*MsgCreateIdResponse, error)
+	UpdateId(context.Context, *MsgUpdateId) (*MsgUpdateIdResponse, error)
+	DeleteId(context.Context, *MsgDeleteId) (*MsgDeleteIdResponse, error)
 }
 
 // UnimplementedMsgServer can be embedded to have forward compatible implementations.
@@ -857,23 +566,14 @@ type UnimplementedMsgServer struct {
 func (*UnimplementedMsgServer) UpdateParams(ctx context.Context, req *MsgUpdateParams) (*MsgUpdateParamsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateParams not implemented")
 }
-func (*UnimplementedMsgServer) CreateUser(ctx context.Context, req *MsgCreateUser) (*MsgCreateUserResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateUser not implemented")
+func (*UnimplementedMsgServer) CreateId(ctx context.Context, req *MsgCreateId) (*MsgCreateIdResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateId not implemented")
 }
-func (*UnimplementedMsgServer) UpdateUser(ctx context.Context, req *MsgUpdateUser) (*MsgUpdateUserResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateUser not implemented")
+func (*UnimplementedMsgServer) UpdateId(ctx context.Context, req *MsgUpdateId) (*MsgUpdateIdResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateId not implemented")
 }
-func (*UnimplementedMsgServer) DeleteUser(ctx context.Context, req *MsgDeleteUser) (*MsgDeleteUserResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteUser not implemented")
-}
-func (*UnimplementedMsgServer) CreateAddress(ctx context.Context, req *MsgCreateAddress) (*MsgCreateAddressResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateAddress not implemented")
-}
-func (*UnimplementedMsgServer) UpdateAddress(ctx context.Context, req *MsgUpdateAddress) (*MsgUpdateAddressResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateAddress not implemented")
-}
-func (*UnimplementedMsgServer) DeleteAddress(ctx context.Context, req *MsgDeleteAddress) (*MsgDeleteAddressResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteAddress not implemented")
+func (*UnimplementedMsgServer) DeleteId(ctx context.Context, req *MsgDeleteId) (*MsgDeleteIdResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteId not implemented")
 }
 
 func RegisterMsgServer(s grpc1.Server, srv MsgServer) {
@@ -898,110 +598,56 @@ func _Msg_UpdateParams_Handler(srv interface{}, ctx context.Context, dec func(in
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Msg_CreateUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(MsgCreateUser)
+func _Msg_CreateId_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgCreateId)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(MsgServer).CreateUser(ctx, in)
+		return srv.(MsgServer).CreateId(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/identity.identity.Msg/CreateUser",
+		FullMethod: "/identity.identity.Msg/CreateId",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MsgServer).CreateUser(ctx, req.(*MsgCreateUser))
+		return srv.(MsgServer).CreateId(ctx, req.(*MsgCreateId))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Msg_UpdateUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(MsgUpdateUser)
+func _Msg_UpdateId_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgUpdateId)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(MsgServer).UpdateUser(ctx, in)
+		return srv.(MsgServer).UpdateId(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/identity.identity.Msg/UpdateUser",
+		FullMethod: "/identity.identity.Msg/UpdateId",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MsgServer).UpdateUser(ctx, req.(*MsgUpdateUser))
+		return srv.(MsgServer).UpdateId(ctx, req.(*MsgUpdateId))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Msg_DeleteUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(MsgDeleteUser)
+func _Msg_DeleteId_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgDeleteId)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(MsgServer).DeleteUser(ctx, in)
+		return srv.(MsgServer).DeleteId(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/identity.identity.Msg/DeleteUser",
+		FullMethod: "/identity.identity.Msg/DeleteId",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MsgServer).DeleteUser(ctx, req.(*MsgDeleteUser))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Msg_CreateAddress_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(MsgCreateAddress)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(MsgServer).CreateAddress(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/identity.identity.Msg/CreateAddress",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MsgServer).CreateAddress(ctx, req.(*MsgCreateAddress))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Msg_UpdateAddress_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(MsgUpdateAddress)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(MsgServer).UpdateAddress(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/identity.identity.Msg/UpdateAddress",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MsgServer).UpdateAddress(ctx, req.(*MsgUpdateAddress))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Msg_DeleteAddress_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(MsgDeleteAddress)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(MsgServer).DeleteAddress(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/identity.identity.Msg/DeleteAddress",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MsgServer).DeleteAddress(ctx, req.(*MsgDeleteAddress))
+		return srv.(MsgServer).DeleteId(ctx, req.(*MsgDeleteId))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1015,28 +661,16 @@ var _Msg_serviceDesc = grpc.ServiceDesc{
 			Handler:    _Msg_UpdateParams_Handler,
 		},
 		{
-			MethodName: "CreateUser",
-			Handler:    _Msg_CreateUser_Handler,
+			MethodName: "CreateId",
+			Handler:    _Msg_CreateId_Handler,
 		},
 		{
-			MethodName: "UpdateUser",
-			Handler:    _Msg_UpdateUser_Handler,
+			MethodName: "UpdateId",
+			Handler:    _Msg_UpdateId_Handler,
 		},
 		{
-			MethodName: "DeleteUser",
-			Handler:    _Msg_DeleteUser_Handler,
-		},
-		{
-			MethodName: "CreateAddress",
-			Handler:    _Msg_CreateAddress_Handler,
-		},
-		{
-			MethodName: "UpdateAddress",
-			Handler:    _Msg_UpdateAddress_Handler,
-		},
-		{
-			MethodName: "DeleteAddress",
-			Handler:    _Msg_DeleteAddress_Handler,
+			MethodName: "DeleteId",
+			Handler:    _Msg_DeleteId_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -1106,7 +740,7 @@ func (m *MsgUpdateParamsResponse) MarshalToSizedBuffer(dAtA []byte) (int, error)
 	return len(dAtA) - i, nil
 }
 
-func (m *MsgCreateUser) Marshal() (dAtA []byte, err error) {
+func (m *MsgCreateId) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -1116,16 +750,23 @@ func (m *MsgCreateUser) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *MsgCreateUser) MarshalTo(dAtA []byte) (int, error) {
+func (m *MsgCreateId) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *MsgCreateUser) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *MsgCreateId) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
+	if len(m.Username) > 0 {
+		i -= len(m.Username)
+		copy(dAtA[i:], m.Username)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Username)))
+		i--
+		dAtA[i] = 0x2a
+	}
 	if len(m.Owner) > 0 {
 		i -= len(m.Owner)
 		copy(dAtA[i:], m.Owner)
@@ -1157,7 +798,7 @@ func (m *MsgCreateUser) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	return len(dAtA) - i, nil
 }
 
-func (m *MsgCreateUserResponse) Marshal() (dAtA []byte, err error) {
+func (m *MsgCreateIdResponse) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -1167,12 +808,12 @@ func (m *MsgCreateUserResponse) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *MsgCreateUserResponse) MarshalTo(dAtA []byte) (int, error) {
+func (m *MsgCreateIdResponse) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *MsgCreateUserResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *MsgCreateIdResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
@@ -1180,7 +821,7 @@ func (m *MsgCreateUserResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	return len(dAtA) - i, nil
 }
 
-func (m *MsgUpdateUser) Marshal() (dAtA []byte, err error) {
+func (m *MsgUpdateId) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -1190,16 +831,23 @@ func (m *MsgUpdateUser) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *MsgUpdateUser) MarshalTo(dAtA []byte) (int, error) {
+func (m *MsgUpdateId) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *MsgUpdateUser) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *MsgUpdateId) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
+	if len(m.Username) > 0 {
+		i -= len(m.Username)
+		copy(dAtA[i:], m.Username)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Username)))
+		i--
+		dAtA[i] = 0x2a
+	}
 	if len(m.Owner) > 0 {
 		i -= len(m.Owner)
 		copy(dAtA[i:], m.Owner)
@@ -1231,7 +879,7 @@ func (m *MsgUpdateUser) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	return len(dAtA) - i, nil
 }
 
-func (m *MsgUpdateUserResponse) Marshal() (dAtA []byte, err error) {
+func (m *MsgUpdateIdResponse) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -1241,12 +889,12 @@ func (m *MsgUpdateUserResponse) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *MsgUpdateUserResponse) MarshalTo(dAtA []byte) (int, error) {
+func (m *MsgUpdateIdResponse) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *MsgUpdateUserResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *MsgUpdateIdResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
@@ -1254,7 +902,7 @@ func (m *MsgUpdateUserResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	return len(dAtA) - i, nil
 }
 
-func (m *MsgDeleteUser) Marshal() (dAtA []byte, err error) {
+func (m *MsgDeleteId) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -1264,12 +912,12 @@ func (m *MsgDeleteUser) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *MsgDeleteUser) MarshalTo(dAtA []byte) (int, error) {
+func (m *MsgDeleteId) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *MsgDeleteUser) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *MsgDeleteId) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
@@ -1291,7 +939,7 @@ func (m *MsgDeleteUser) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	return len(dAtA) - i, nil
 }
 
-func (m *MsgDeleteUserResponse) Marshal() (dAtA []byte, err error) {
+func (m *MsgDeleteIdResponse) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -1301,192 +949,12 @@ func (m *MsgDeleteUserResponse) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *MsgDeleteUserResponse) MarshalTo(dAtA []byte) (int, error) {
+func (m *MsgDeleteIdResponse) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *MsgDeleteUserResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	return len(dAtA) - i, nil
-}
-
-func (m *MsgCreateAddress) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
-}
-
-func (m *MsgCreateAddress) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *MsgCreateAddress) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if len(m.Owner) > 0 {
-		i -= len(m.Owner)
-		copy(dAtA[i:], m.Owner)
-		i = encodeVarintTx(dAtA, i, uint64(len(m.Owner)))
-		i--
-		dAtA[i] = 0x12
-	}
-	if len(m.Creator) > 0 {
-		i -= len(m.Creator)
-		copy(dAtA[i:], m.Creator)
-		i = encodeVarintTx(dAtA, i, uint64(len(m.Creator)))
-		i--
-		dAtA[i] = 0xa
-	}
-	return len(dAtA) - i, nil
-}
-
-func (m *MsgCreateAddressResponse) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
-}
-
-func (m *MsgCreateAddressResponse) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *MsgCreateAddressResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	return len(dAtA) - i, nil
-}
-
-func (m *MsgUpdateAddress) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
-}
-
-func (m *MsgUpdateAddress) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *MsgUpdateAddress) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if len(m.Owner) > 0 {
-		i -= len(m.Owner)
-		copy(dAtA[i:], m.Owner)
-		i = encodeVarintTx(dAtA, i, uint64(len(m.Owner)))
-		i--
-		dAtA[i] = 0x12
-	}
-	if len(m.Creator) > 0 {
-		i -= len(m.Creator)
-		copy(dAtA[i:], m.Creator)
-		i = encodeVarintTx(dAtA, i, uint64(len(m.Creator)))
-		i--
-		dAtA[i] = 0xa
-	}
-	return len(dAtA) - i, nil
-}
-
-func (m *MsgUpdateAddressResponse) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
-}
-
-func (m *MsgUpdateAddressResponse) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *MsgUpdateAddressResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	return len(dAtA) - i, nil
-}
-
-func (m *MsgDeleteAddress) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
-}
-
-func (m *MsgDeleteAddress) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *MsgDeleteAddress) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if len(m.Owner) > 0 {
-		i -= len(m.Owner)
-		copy(dAtA[i:], m.Owner)
-		i = encodeVarintTx(dAtA, i, uint64(len(m.Owner)))
-		i--
-		dAtA[i] = 0x12
-	}
-	if len(m.Creator) > 0 {
-		i -= len(m.Creator)
-		copy(dAtA[i:], m.Creator)
-		i = encodeVarintTx(dAtA, i, uint64(len(m.Creator)))
-		i--
-		dAtA[i] = 0xa
-	}
-	return len(dAtA) - i, nil
-}
-
-func (m *MsgDeleteAddressResponse) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
-}
-
-func (m *MsgDeleteAddressResponse) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *MsgDeleteAddressResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *MsgDeleteIdResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
@@ -1529,7 +997,7 @@ func (m *MsgUpdateParamsResponse) Size() (n int) {
 	return n
 }
 
-func (m *MsgCreateUser) Size() (n int) {
+func (m *MsgCreateId) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -1551,10 +1019,14 @@ func (m *MsgCreateUser) Size() (n int) {
 	if l > 0 {
 		n += 1 + l + sovTx(uint64(l))
 	}
+	l = len(m.Username)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
 	return n
 }
 
-func (m *MsgCreateUserResponse) Size() (n int) {
+func (m *MsgCreateIdResponse) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -1563,7 +1035,7 @@ func (m *MsgCreateUserResponse) Size() (n int) {
 	return n
 }
 
-func (m *MsgUpdateUser) Size() (n int) {
+func (m *MsgUpdateId) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -1585,10 +1057,14 @@ func (m *MsgUpdateUser) Size() (n int) {
 	if l > 0 {
 		n += 1 + l + sovTx(uint64(l))
 	}
+	l = len(m.Username)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
 	return n
 }
 
-func (m *MsgUpdateUserResponse) Size() (n int) {
+func (m *MsgUpdateIdResponse) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -1597,7 +1073,7 @@ func (m *MsgUpdateUserResponse) Size() (n int) {
 	return n
 }
 
-func (m *MsgDeleteUser) Size() (n int) {
+func (m *MsgDeleteId) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -1614,85 +1090,7 @@ func (m *MsgDeleteUser) Size() (n int) {
 	return n
 }
 
-func (m *MsgDeleteUserResponse) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	return n
-}
-
-func (m *MsgCreateAddress) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	l = len(m.Creator)
-	if l > 0 {
-		n += 1 + l + sovTx(uint64(l))
-	}
-	l = len(m.Owner)
-	if l > 0 {
-		n += 1 + l + sovTx(uint64(l))
-	}
-	return n
-}
-
-func (m *MsgCreateAddressResponse) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	return n
-}
-
-func (m *MsgUpdateAddress) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	l = len(m.Creator)
-	if l > 0 {
-		n += 1 + l + sovTx(uint64(l))
-	}
-	l = len(m.Owner)
-	if l > 0 {
-		n += 1 + l + sovTx(uint64(l))
-	}
-	return n
-}
-
-func (m *MsgUpdateAddressResponse) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	return n
-}
-
-func (m *MsgDeleteAddress) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	l = len(m.Creator)
-	if l > 0 {
-		n += 1 + l + sovTx(uint64(l))
-	}
-	l = len(m.Owner)
-	if l > 0 {
-		n += 1 + l + sovTx(uint64(l))
-	}
-	return n
-}
-
-func (m *MsgDeleteAddressResponse) Size() (n int) {
+func (m *MsgDeleteIdResponse) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -1872,7 +1270,7 @@ func (m *MsgUpdateParamsResponse) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *MsgCreateUser) Unmarshal(dAtA []byte) error {
+func (m *MsgCreateId) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -1895,10 +1293,10 @@ func (m *MsgCreateUser) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: MsgCreateUser: wiretype end group for non-group")
+			return fmt.Errorf("proto: MsgCreateId: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: MsgCreateUser: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: MsgCreateId: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
@@ -2029,6 +1427,38 @@ func (m *MsgCreateUser) Unmarshal(dAtA []byte) error {
 			}
 			m.Owner = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
+		case 5:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Username", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Username = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
 		default:
 			iNdEx = preIndex
 			skippy, err := skipTx(dAtA[iNdEx:])
@@ -2050,7 +1480,7 @@ func (m *MsgCreateUser) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *MsgCreateUserResponse) Unmarshal(dAtA []byte) error {
+func (m *MsgCreateIdResponse) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -2073,10 +1503,10 @@ func (m *MsgCreateUserResponse) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: MsgCreateUserResponse: wiretype end group for non-group")
+			return fmt.Errorf("proto: MsgCreateIdResponse: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: MsgCreateUserResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: MsgCreateIdResponse: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		default:
@@ -2100,7 +1530,7 @@ func (m *MsgCreateUserResponse) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *MsgUpdateUser) Unmarshal(dAtA []byte) error {
+func (m *MsgUpdateId) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -2123,10 +1553,10 @@ func (m *MsgUpdateUser) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: MsgUpdateUser: wiretype end group for non-group")
+			return fmt.Errorf("proto: MsgUpdateId: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: MsgUpdateUser: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: MsgUpdateId: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
@@ -2257,6 +1687,38 @@ func (m *MsgUpdateUser) Unmarshal(dAtA []byte) error {
 			}
 			m.Owner = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
+		case 5:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Username", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Username = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
 		default:
 			iNdEx = preIndex
 			skippy, err := skipTx(dAtA[iNdEx:])
@@ -2278,7 +1740,7 @@ func (m *MsgUpdateUser) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *MsgUpdateUserResponse) Unmarshal(dAtA []byte) error {
+func (m *MsgUpdateIdResponse) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -2301,10 +1763,10 @@ func (m *MsgUpdateUserResponse) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: MsgUpdateUserResponse: wiretype end group for non-group")
+			return fmt.Errorf("proto: MsgUpdateIdResponse: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: MsgUpdateUserResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: MsgUpdateIdResponse: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		default:
@@ -2328,7 +1790,7 @@ func (m *MsgUpdateUserResponse) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *MsgDeleteUser) Unmarshal(dAtA []byte) error {
+func (m *MsgDeleteId) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -2351,10 +1813,10 @@ func (m *MsgDeleteUser) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: MsgDeleteUser: wiretype end group for non-group")
+			return fmt.Errorf("proto: MsgDeleteId: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: MsgDeleteUser: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: MsgDeleteId: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
@@ -2442,7 +1904,7 @@ func (m *MsgDeleteUser) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *MsgDeleteUserResponse) Unmarshal(dAtA []byte) error {
+func (m *MsgDeleteIdResponse) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -2465,502 +1927,10 @@ func (m *MsgDeleteUserResponse) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: MsgDeleteUserResponse: wiretype end group for non-group")
+			return fmt.Errorf("proto: MsgDeleteIdResponse: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: MsgDeleteUserResponse: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		default:
-			iNdEx = preIndex
-			skippy, err := skipTx(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthTx
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *MsgCreateAddress) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowTx
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: MsgCreateAddress: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: MsgCreateAddress: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Creator", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowTx
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthTx
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthTx
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.Creator = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-		case 2:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Owner", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowTx
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthTx
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthTx
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.Owner = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipTx(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthTx
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *MsgCreateAddressResponse) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowTx
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: MsgCreateAddressResponse: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: MsgCreateAddressResponse: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		default:
-			iNdEx = preIndex
-			skippy, err := skipTx(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthTx
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *MsgUpdateAddress) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowTx
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: MsgUpdateAddress: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: MsgUpdateAddress: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Creator", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowTx
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthTx
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthTx
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.Creator = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-		case 2:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Owner", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowTx
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthTx
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthTx
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.Owner = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipTx(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthTx
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *MsgUpdateAddressResponse) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowTx
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: MsgUpdateAddressResponse: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: MsgUpdateAddressResponse: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		default:
-			iNdEx = preIndex
-			skippy, err := skipTx(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthTx
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *MsgDeleteAddress) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowTx
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: MsgDeleteAddress: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: MsgDeleteAddress: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Creator", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowTx
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthTx
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthTx
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.Creator = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-		case 2:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Owner", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowTx
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthTx
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthTx
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.Owner = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipTx(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthTx
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *MsgDeleteAddressResponse) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowTx
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: MsgDeleteAddressResponse: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: MsgDeleteAddressResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: MsgDeleteIdResponse: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		default:

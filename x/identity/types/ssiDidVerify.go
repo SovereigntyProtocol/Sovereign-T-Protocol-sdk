@@ -1,27 +1,31 @@
 package types
 
 import (
+	"encoding/hex"
 	"errors"
 	"fmt"
 	"strings"
 
+	"github.com/cosmos/cosmos-sdk/crypto/keys/secp256k1"
+	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/bech32"
 )
 
 var networkNames = map[string]string{
-	"1":  "discoverynet",
-	"2":  "identityforge",
-	"3":  "questchain",
-	"4":  "authenticitynet",
-	"5":  "personapulse",
-	"6":  "veritysphere",
-	"7":  "insightnet",
-	"8":  "emergenet",
-	"9":  "egonet",
-	"10": "identitynexa",
+	"1":  "DiscoveryNet",
+	"2":  "IdentityForge",
+	"3":  "QuestChain",
+	"4":  "AuthenticityNet",
+	"5":  "PersonaPulse",
+	"6":  "VeritySphere",
+	"7":  "InsightNet",
+	"8":  "EmergeNet",
+	"9":  "EgoNet",
+	"10": "IdentityNEXA",
 }
 
 const AccAddprifix = "ssi"
+const network = "4"
 
 func GetDefaultDidPrefix(networkID string) string {
 	networkName, exists := networkNames[networkID]
@@ -80,7 +84,7 @@ func GetDataAfterDivider(did string) (string, error) {
 
 func VerifyPrefixFormat(did string) (string, error) {
 
-	didprifix := GetDefaultDidPrefix("4")
+	didprifix := GetDefaultDidPrefix(network)
 
 	if len(strings.TrimSpace(did)) == 0 {
 		return "", fmt.Errorf("empty did string is not allowed")
@@ -127,4 +131,31 @@ func VerifyDidFormat(did string) (bool, error) {
 	}
 
 	return true, nil
+}
+
+func CreateNewDid() (string, error) {
+
+	privKey := secp256k1.GenPrivKey()
+
+	// Derive the public key
+	pubKey := privKey.PubKey()
+
+	// Generate the address using the public key
+	address := sdk.AccAddress(pubKey.Address().Bytes())
+
+	// Encode the address using Bech32
+	bech32Address := address.String()
+
+	fmt.Printf("New address: %s\n", bech32Address)
+
+	_, data, err := bech32.DecodeAndConvert(bech32Address)
+	dataString := hex.EncodeToString(data)
+
+	if err != nil {
+		return "", err
+	}
+	didprefix := GetDefaultDidPrefix(network)
+
+	return didprefix + "1" + dataString, nil
+
 }

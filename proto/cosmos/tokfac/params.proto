@@ -1,0 +1,15 @@
+syntax = "proto3";
+package tokfac.tokfac;
+
+import "amino/amino.proto";
+import "gogoproto/gogo.proto";
+
+option go_package = "github.com/cosmos/cosmos-sdk/x/tokfac/types";
+
+// Params defines the parameters for the module.
+message Params {
+  option (amino.name) = "github.com/cosmos/cosmos-sdk/x/tokfac/Params";
+  option (gogoproto.equal) = true;
+
+  
+}

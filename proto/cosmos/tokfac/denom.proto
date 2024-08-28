@@ -1,0 +1,15 @@
+syntax = "proto3";
+package tokfac.tokfac;
+
+option go_package = "tokfac/x/tokfac/types";
+
+message Denom {
+  string denom = 1; 
+  string name = 2; 
+  string symbol = 3; 
+  string description = 4; 
+  string maxsupply = 5; 
+  string creator = 6;
+  int32 denomunit = 7;
+}
+

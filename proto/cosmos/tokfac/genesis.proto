@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package tokfac.tokfac;
+
+import "amino/amino.proto";
+import "gogoproto/gogo.proto";
+import "cosmos/tokfac/params.proto";
+import "cosmos/tokfac/denom.proto";
+
+option go_package = "github.com/cosmos/cosmos-sdk/x/tokfac/types";
+
+// GenesisState defines the tokfac module's genesis state.
+message GenesisState {
+  
+  // params defines all the parameters of the module.
+           Params params    = 1 [(gogoproto.nullable) = false, (amino.dont_omitempty) = true];
+  repeated Denom  denomList = 2 [(gogoproto.nullable) = false] ;
+}
+
