@@ -6,10 +6,10 @@ import "amino/amino.proto";
 import "gogoproto/gogo.proto";
 import "google/api/annotations.proto";
 import "cosmos/base/query/v1beta1/pagination.proto";
-import "identity/identity/params.proto";
-import "identity/identity/id.proto";
+import "cosmos/identity/params.proto";
+import "cosmos/identity/id.proto";
 
-option go_package = "identity/x/identity/types";
+option go_package = "github.com/cosmos/cosmos-sdk/x/identity/types";
 
 // Query defines the gRPC querier service.
 service Query {
@@ -17,7 +17,6 @@ service Query {
   // Parameters queries the parameters of the module.
   rpc Params (QueryParamsRequest) returns (QueryParamsResponse) {
     option (google.api.http).get = "/identity/identity/params";
-  
   }
   
   // Queries a list of Id items.

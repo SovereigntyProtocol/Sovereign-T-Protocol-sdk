@@ -25,7 +25,7 @@ var networkNames = map[string]string{
 }
 
 const AccAddprifix = "ssi"
-const network = "4"
+const network = "5"
 
 func GetDefaultDidPrefix(networkID string) string {
 	networkName, exists := networkNames[networkID]
