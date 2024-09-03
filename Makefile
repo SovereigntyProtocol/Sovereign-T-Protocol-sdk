@@ -7,7 +7,7 @@ export CMTVERSION := $(shell go list -m github.com/cometbft/cometbft | sed 's:.*
 export COMMIT := $(shell git log -1 --format='%H')
 LEDGER_ENABLED ?= true
 BINDIR ?= $(GOPATH)/bin
-BUILDDIR ?= $(CURDIR)/build
+BUILDDIR ?= $(CURDIR)/sov
 SIMAPP = ./simapp
 MOCKS_DIR = $(CURDIR)/tests/mocks
 HTTPS_GIT := https://github.com/cosmos/cosmos-sdk.git

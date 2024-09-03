@@ -3,9 +3,9 @@ package simapp
 import (
 	"time"
 
-	tokenfactorymodulev1 "github.com/cosmos/cosmos-sdk/tokenfactory/module"
-	_ "github.com/cosmos/cosmos-sdk/x/tokenfactory/module" // import for side-effects
-	tokenfactorymoduletypes "github.com/cosmos/cosmos-sdk/x/tokenfactory/types"
+	tokfacmodulev1 "github.com/cosmos/cosmos-sdk/ssiapi/tokfac/module"
+	_ "github.com/cosmos/cosmos-sdk/x/tokfac/module" // import for side-effects
+	tokfacmoduletypes "github.com/cosmos/cosmos-sdk/x/tokfac/types"
 
 	identitymodulev1 "github.com/cosmos/cosmos-sdk/ssiapi/identity/module"
 	_ "github.com/cosmos/cosmos-sdk/x/identity/module" // import for side-effects
@@ -92,7 +92,7 @@ var (
 		{Account: stakingtypes.NotBondedPoolName, Permissions: []string{authtypes.Burner, stakingtypes.ModuleName}},
 		{Account: govtypes.ModuleName, Permissions: []string{authtypes.Burner}},
 		{Account: nft.ModuleName},
-		{Account: tokenfactorymoduletypes.ModuleName, Permissions: []string{authtypes.Minter, authtypes.Burner, authtypes.Staking}},
+		{Account: tokfacmoduletypes.ModuleName, Permissions: []string{authtypes.Minter, authtypes.Burner, authtypes.Staking}},
 	}
 
 	// blocked account addresses
@@ -129,7 +129,8 @@ var (
 						evidencetypes.ModuleName,
 						stakingtypes.ModuleName,
 						authz.ModuleName,
-						tokenfactorymoduletypes.ModuleName,
+
+						tokfacmoduletypes.ModuleName,
 						identitymoduletypes.ModuleName,
 					},
 					EndBlockers: []string{
@@ -138,7 +139,8 @@ var (
 						stakingtypes.ModuleName,
 						feegrant.ModuleName,
 						group.ModuleName,
-						tokenfactorymoduletypes.ModuleName,
+
+						tokfacmoduletypes.ModuleName,
 						identitymoduletypes.ModuleName,
 					},
 					OverrideStoreKeys: []*runtimev1alpha1.StoreKeyConfig{
@@ -168,8 +170,10 @@ var (
 						paramstypes.ModuleName,
 						upgradetypes.ModuleName,
 						vestingtypes.ModuleName,
-						tokenfactorymoduletypes.ModuleName,
+
 						circuittypes.ModuleName,
+
+						tokfacmoduletypes.ModuleName,
 						identitymoduletypes.ModuleName,
 					},
 					// When ExportGenesis is not specified, the export genesis module order
@@ -271,13 +275,15 @@ var (
 				Name:   consensustypes.ModuleName,
 				Config: appconfig.WrapAny(&consensusmodulev1.Module{}),
 			},
-			{
-				Name:   tokenfactorymoduletypes.ModuleName,
-				Config: appconfig.WrapAny(&tokenfactorymodulev1.Module{}),
-			},
+
 			{
 				Name:   circuittypes.ModuleName,
 				Config: appconfig.WrapAny(&circuitmodulev1.Module{}),
+			},
+
+			{
+				Name:   tokfacmoduletypes.ModuleName,
+				Config: appconfig.WrapAny(&tokfacmodulev1.Module{}),
 			},
 			{
 				Name:   identitymoduletypes.ModuleName,

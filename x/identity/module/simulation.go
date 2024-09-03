@@ -23,29 +23,17 @@ var (
 )
 
 const (
-	opWeightMsgCreateUser = "op_weight_msg_user"
+	opWeightMsgCreateId = "op_weight_msg_id"
 	// TODO: Determine the simulation weight value
-	defaultWeightMsgCreateUser int = 100
+	defaultWeightMsgCreateId int = 100
 
-	opWeightMsgUpdateUser = "op_weight_msg_user"
+	opWeightMsgUpdateId = "op_weight_msg_id"
 	// TODO: Determine the simulation weight value
-	defaultWeightMsgUpdateUser int = 100
+	defaultWeightMsgUpdateId int = 100
 
-	opWeightMsgDeleteUser = "op_weight_msg_user"
+	opWeightMsgDeleteId = "op_weight_msg_id"
 	// TODO: Determine the simulation weight value
-	defaultWeightMsgDeleteUser int = 100
-
-	opWeightMsgCreateAddress = "op_weight_msg_address"
-	// TODO: Determine the simulation weight value
-	defaultWeightMsgCreateAddress int = 100
-
-	opWeightMsgUpdateAddress = "op_weight_msg_address"
-	// TODO: Determine the simulation weight value
-	defaultWeightMsgUpdateAddress int = 100
-
-	opWeightMsgDeleteAddress = "op_weight_msg_address"
-	// TODO: Determine the simulation weight value
-	defaultWeightMsgDeleteAddress int = 100
+	defaultWeightMsgDeleteId int = 100
 
 	// this line is used by starport scaffolding # simapp/module/const
 )
@@ -58,7 +46,7 @@ func (AppModule) GenerateGenesisState(simState *module.SimulationState) {
 	}
 	identityGenesis := types.GenesisState{
 		Params: types.DefaultParams(),
-		UserList: []types.User{
+		IdList: []types.Id{
 			{
 				Creator: sample.AccAddress(),
 				Did:     "0",
@@ -66,16 +54,6 @@ func (AppModule) GenerateGenesisState(simState *module.SimulationState) {
 			{
 				Creator: sample.AccAddress(),
 				Did:     "1",
-			},
-		},
-		AddressList: []types.Address{
-			{
-				Creator: sample.AccAddress(),
-				Owner:   "0",
-			},
-			{
-				Creator: sample.AccAddress(),
-				Owner:   "1",
 			},
 		},
 		// this line is used by starport scaffolding # simapp/module/genesisState
@@ -90,70 +68,37 @@ func (am AppModule) RegisterStoreDecoder(_ simtypes.StoreDecoderRegistry) {}
 func (am AppModule) WeightedOperations(simState module.SimulationState) []simtypes.WeightedOperation {
 	operations := make([]simtypes.WeightedOperation, 0)
 
-	var weightMsgCreateUser int
-	simState.AppParams.GetOrGenerate(opWeightMsgCreateUser, &weightMsgCreateUser, nil,
+	var weightMsgCreateId int
+	simState.AppParams.GetOrGenerate(opWeightMsgCreateId, &weightMsgCreateId, nil,
 		func(_ *rand.Rand) {
-			weightMsgCreateUser = defaultWeightMsgCreateUser
+			weightMsgCreateId = defaultWeightMsgCreateId
 		},
 	)
 	operations = append(operations, simulation.NewWeightedOperation(
-		weightMsgCreateUser,
-		identitysimulation.SimulateMsgCreateUser(am.accountKeeper, am.bankKeeper, am.keeper),
+		weightMsgCreateId,
+		identitysimulation.SimulateMsgCreateId(am.accountKeeper, am.bankKeeper, am.keeper),
 	))
 
-	var weightMsgUpdateUser int
-	simState.AppParams.GetOrGenerate(opWeightMsgUpdateUser, &weightMsgUpdateUser, nil,
+	var weightMsgUpdateId int
+	simState.AppParams.GetOrGenerate(opWeightMsgUpdateId, &weightMsgUpdateId, nil,
 		func(_ *rand.Rand) {
-			weightMsgUpdateUser = defaultWeightMsgUpdateUser
+			weightMsgUpdateId = defaultWeightMsgUpdateId
 		},
 	)
 	operations = append(operations, simulation.NewWeightedOperation(
-		weightMsgUpdateUser,
-		identitysimulation.SimulateMsgUpdateUser(am.accountKeeper, am.bankKeeper, am.keeper),
+		weightMsgUpdateId,
+		identitysimulation.SimulateMsgUpdateId(am.accountKeeper, am.bankKeeper, am.keeper),
 	))
 
-	var weightMsgDeleteUser int
-	simState.AppParams.GetOrGenerate(opWeightMsgDeleteUser, &weightMsgDeleteUser, nil,
+	var weightMsgDeleteId int
+	simState.AppParams.GetOrGenerate(opWeightMsgDeleteId, &weightMsgDeleteId, nil,
 		func(_ *rand.Rand) {
-			weightMsgDeleteUser = defaultWeightMsgDeleteUser
+			weightMsgDeleteId = defaultWeightMsgDeleteId
 		},
 	)
 	operations = append(operations, simulation.NewWeightedOperation(
-		weightMsgDeleteUser,
-		identitysimulation.SimulateMsgDeleteUser(am.accountKeeper, am.bankKeeper, am.keeper),
-	))
-
-	var weightMsgCreateAddress int
-	simState.AppParams.GetOrGenerate(opWeightMsgCreateAddress, &weightMsgCreateAddress, nil,
-		func(_ *rand.Rand) {
-			weightMsgCreateAddress = defaultWeightMsgCreateAddress
-		},
-	)
-	operations = append(operations, simulation.NewWeightedOperation(
-		weightMsgCreateAddress,
-		identitysimulation.SimulateMsgCreateAddress(am.accountKeeper, am.bankKeeper, am.keeper),
-	))
-
-	var weightMsgUpdateAddress int
-	simState.AppParams.GetOrGenerate(opWeightMsgUpdateAddress, &weightMsgUpdateAddress, nil,
-		func(_ *rand.Rand) {
-			weightMsgUpdateAddress = defaultWeightMsgUpdateAddress
-		},
-	)
-	operations = append(operations, simulation.NewWeightedOperation(
-		weightMsgUpdateAddress,
-		identitysimulation.SimulateMsgUpdateAddress(am.accountKeeper, am.bankKeeper, am.keeper),
-	))
-
-	var weightMsgDeleteAddress int
-	simState.AppParams.GetOrGenerate(opWeightMsgDeleteAddress, &weightMsgDeleteAddress, nil,
-		func(_ *rand.Rand) {
-			weightMsgDeleteAddress = defaultWeightMsgDeleteAddress
-		},
-	)
-	operations = append(operations, simulation.NewWeightedOperation(
-		weightMsgDeleteAddress,
-		identitysimulation.SimulateMsgDeleteAddress(am.accountKeeper, am.bankKeeper, am.keeper),
+		weightMsgDeleteId,
+		identitysimulation.SimulateMsgDeleteId(am.accountKeeper, am.bankKeeper, am.keeper),
 	))
 
 	// this line is used by starport scaffolding # simapp/module/operation
@@ -165,50 +110,26 @@ func (am AppModule) WeightedOperations(simState module.SimulationState) []simtyp
 func (am AppModule) ProposalMsgs(simState module.SimulationState) []simtypes.WeightedProposalMsg {
 	return []simtypes.WeightedProposalMsg{
 		simulation.NewWeightedProposalMsg(
-			opWeightMsgCreateUser,
-			defaultWeightMsgCreateUser,
+			opWeightMsgCreateId,
+			defaultWeightMsgCreateId,
 			func(r *rand.Rand, ctx sdk.Context, accs []simtypes.Account) sdk.Msg {
-				identitysimulation.SimulateMsgCreateUser(am.accountKeeper, am.bankKeeper, am.keeper)
+				identitysimulation.SimulateMsgCreateId(am.accountKeeper, am.bankKeeper, am.keeper)
 				return nil
 			},
 		),
 		simulation.NewWeightedProposalMsg(
-			opWeightMsgUpdateUser,
-			defaultWeightMsgUpdateUser,
+			opWeightMsgUpdateId,
+			defaultWeightMsgUpdateId,
 			func(r *rand.Rand, ctx sdk.Context, accs []simtypes.Account) sdk.Msg {
-				identitysimulation.SimulateMsgUpdateUser(am.accountKeeper, am.bankKeeper, am.keeper)
+				identitysimulation.SimulateMsgUpdateId(am.accountKeeper, am.bankKeeper, am.keeper)
 				return nil
 			},
 		),
 		simulation.NewWeightedProposalMsg(
-			opWeightMsgDeleteUser,
-			defaultWeightMsgDeleteUser,
+			opWeightMsgDeleteId,
+			defaultWeightMsgDeleteId,
 			func(r *rand.Rand, ctx sdk.Context, accs []simtypes.Account) sdk.Msg {
-				identitysimulation.SimulateMsgDeleteUser(am.accountKeeper, am.bankKeeper, am.keeper)
-				return nil
-			},
-		),
-		simulation.NewWeightedProposalMsg(
-			opWeightMsgCreateAddress,
-			defaultWeightMsgCreateAddress,
-			func(r *rand.Rand, ctx sdk.Context, accs []simtypes.Account) sdk.Msg {
-				identitysimulation.SimulateMsgCreateAddress(am.accountKeeper, am.bankKeeper, am.keeper)
-				return nil
-			},
-		),
-		simulation.NewWeightedProposalMsg(
-			opWeightMsgUpdateAddress,
-			defaultWeightMsgUpdateAddress,
-			func(r *rand.Rand, ctx sdk.Context, accs []simtypes.Account) sdk.Msg {
-				identitysimulation.SimulateMsgUpdateAddress(am.accountKeeper, am.bankKeeper, am.keeper)
-				return nil
-			},
-		),
-		simulation.NewWeightedProposalMsg(
-			opWeightMsgDeleteAddress,
-			defaultWeightMsgDeleteAddress,
-			func(r *rand.Rand, ctx sdk.Context, accs []simtypes.Account) sdk.Msg {
-				identitysimulation.SimulateMsgDeleteAddress(am.accountKeeper, am.bankKeeper, am.keeper)
+				identitysimulation.SimulateMsgDeleteId(am.accountKeeper, am.bankKeeper, am.keeper)
 				return nil
 			},
 		),

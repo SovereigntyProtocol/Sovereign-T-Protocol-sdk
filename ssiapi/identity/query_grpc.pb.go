@@ -19,11 +19,9 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	Query_Params_FullMethodName     = "/identity.identity.Query/Params"
-	Query_User_FullMethodName       = "/identity.identity.Query/User"
-	Query_UserAll_FullMethodName    = "/identity.identity.Query/UserAll"
-	Query_Address_FullMethodName    = "/identity.identity.Query/Address"
-	Query_AddressAll_FullMethodName = "/identity.identity.Query/AddressAll"
+	Query_Params_FullMethodName = "/identity.identity.Query/Params"
+	Query_Id_FullMethodName     = "/identity.identity.Query/Id"
+	Query_IdAll_FullMethodName  = "/identity.identity.Query/IdAll"
 )
 
 // QueryClient is the client API for Query service.
@@ -32,12 +30,9 @@ const (
 type QueryClient interface {
 	// Parameters queries the parameters of the module.
 	Params(ctx context.Context, in *QueryParamsRequest, opts ...grpc.CallOption) (*QueryParamsResponse, error)
-	// Queries a list of User items.
-	User(ctx context.Context, in *QueryGetUserRequest, opts ...grpc.CallOption) (*QueryGetUserResponse, error)
-	UserAll(ctx context.Context, in *QueryAllUserRequest, opts ...grpc.CallOption) (*QueryAllUserResponse, error)
-	// Queries a list of Address items.
-	Address(ctx context.Context, in *QueryGetAddressRequest, opts ...grpc.CallOption) (*QueryGetAddressResponse, error)
-	AddressAll(ctx context.Context, in *QueryAllAddressRequest, opts ...grpc.CallOption) (*QueryAllAddressResponse, error)
+	// Queries a list of Id items.
+	Id(ctx context.Context, in *QueryGetIdRequest, opts ...grpc.CallOption) (*QueryGetIdResponse, error)
+	IdAll(ctx context.Context, in *QueryAllIdRequest, opts ...grpc.CallOption) (*QueryAllIdResponse, error)
 }
 
 type queryClient struct {
@@ -57,36 +52,18 @@ func (c *queryClient) Params(ctx context.Context, in *QueryParamsRequest, opts .
 	return out, nil
 }
 
-func (c *queryClient) User(ctx context.Context, in *QueryGetUserRequest, opts ...grpc.CallOption) (*QueryGetUserResponse, error) {
-	out := new(QueryGetUserResponse)
-	err := c.cc.Invoke(ctx, Query_User_FullMethodName, in, out, opts...)
+func (c *queryClient) Id(ctx context.Context, in *QueryGetIdRequest, opts ...grpc.CallOption) (*QueryGetIdResponse, error) {
+	out := new(QueryGetIdResponse)
+	err := c.cc.Invoke(ctx, Query_Id_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *queryClient) UserAll(ctx context.Context, in *QueryAllUserRequest, opts ...grpc.CallOption) (*QueryAllUserResponse, error) {
-	out := new(QueryAllUserResponse)
-	err := c.cc.Invoke(ctx, Query_UserAll_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *queryClient) Address(ctx context.Context, in *QueryGetAddressRequest, opts ...grpc.CallOption) (*QueryGetAddressResponse, error) {
-	out := new(QueryGetAddressResponse)
-	err := c.cc.Invoke(ctx, Query_Address_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *queryClient) AddressAll(ctx context.Context, in *QueryAllAddressRequest, opts ...grpc.CallOption) (*QueryAllAddressResponse, error) {
-	out := new(QueryAllAddressResponse)
-	err := c.cc.Invoke(ctx, Query_AddressAll_FullMethodName, in, out, opts...)
+func (c *queryClient) IdAll(ctx context.Context, in *QueryAllIdRequest, opts ...grpc.CallOption) (*QueryAllIdResponse, error) {
+	out := new(QueryAllIdResponse)
+	err := c.cc.Invoke(ctx, Query_IdAll_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -99,12 +76,9 @@ func (c *queryClient) AddressAll(ctx context.Context, in *QueryAllAddressRequest
 type QueryServer interface {
 	// Parameters queries the parameters of the module.
 	Params(context.Context, *QueryParamsRequest) (*QueryParamsResponse, error)
-	// Queries a list of User items.
-	User(context.Context, *QueryGetUserRequest) (*QueryGetUserResponse, error)
-	UserAll(context.Context, *QueryAllUserRequest) (*QueryAllUserResponse, error)
-	// Queries a list of Address items.
-	Address(context.Context, *QueryGetAddressRequest) (*QueryGetAddressResponse, error)
-	AddressAll(context.Context, *QueryAllAddressRequest) (*QueryAllAddressResponse, error)
+	// Queries a list of Id items.
+	Id(context.Context, *QueryGetIdRequest) (*QueryGetIdResponse, error)
+	IdAll(context.Context, *QueryAllIdRequest) (*QueryAllIdResponse, error)
 	mustEmbedUnimplementedQueryServer()
 }
 
@@ -115,17 +89,11 @@ type UnimplementedQueryServer struct {
 func (UnimplementedQueryServer) Params(context.Context, *QueryParamsRequest) (*QueryParamsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Params not implemented")
 }
-func (UnimplementedQueryServer) User(context.Context, *QueryGetUserRequest) (*QueryGetUserResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method User not implemented")
+func (UnimplementedQueryServer) Id(context.Context, *QueryGetIdRequest) (*QueryGetIdResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Id not implemented")
 }
-func (UnimplementedQueryServer) UserAll(context.Context, *QueryAllUserRequest) (*QueryAllUserResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UserAll not implemented")
-}
-func (UnimplementedQueryServer) Address(context.Context, *QueryGetAddressRequest) (*QueryGetAddressResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Address not implemented")
-}
-func (UnimplementedQueryServer) AddressAll(context.Context, *QueryAllAddressRequest) (*QueryAllAddressResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AddressAll not implemented")
+func (UnimplementedQueryServer) IdAll(context.Context, *QueryAllIdRequest) (*QueryAllIdResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method IdAll not implemented")
 }
 func (UnimplementedQueryServer) mustEmbedUnimplementedQueryServer() {}
 
@@ -158,74 +126,38 @@ func _Query_Params_Handler(srv interface{}, ctx context.Context, dec func(interf
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Query_User_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(QueryGetUserRequest)
+func _Query_Id_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryGetIdRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(QueryServer).User(ctx, in)
+		return srv.(QueryServer).Id(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Query_User_FullMethodName,
+		FullMethod: Query_Id_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(QueryServer).User(ctx, req.(*QueryGetUserRequest))
+		return srv.(QueryServer).Id(ctx, req.(*QueryGetIdRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Query_UserAll_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(QueryAllUserRequest)
+func _Query_IdAll_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryAllIdRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(QueryServer).UserAll(ctx, in)
+		return srv.(QueryServer).IdAll(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Query_UserAll_FullMethodName,
+		FullMethod: Query_IdAll_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(QueryServer).UserAll(ctx, req.(*QueryAllUserRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Query_Address_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(QueryGetAddressRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(QueryServer).Address(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Query_Address_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(QueryServer).Address(ctx, req.(*QueryGetAddressRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Query_AddressAll_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(QueryAllAddressRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(QueryServer).AddressAll(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Query_AddressAll_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(QueryServer).AddressAll(ctx, req.(*QueryAllAddressRequest))
+		return srv.(QueryServer).IdAll(ctx, req.(*QueryAllIdRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -242,20 +174,12 @@ var Query_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _Query_Params_Handler,
 		},
 		{
-			MethodName: "User",
-			Handler:    _Query_User_Handler,
+			MethodName: "Id",
+			Handler:    _Query_Id_Handler,
 		},
 		{
-			MethodName: "UserAll",
-			Handler:    _Query_UserAll_Handler,
-		},
-		{
-			MethodName: "Address",
-			Handler:    _Query_Address_Handler,
-		},
-		{
-			MethodName: "AddressAll",
-			Handler:    _Query_AddressAll_Handler,
+			MethodName: "IdAll",
+			Handler:    _Query_IdAll_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
