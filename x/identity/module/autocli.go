@@ -15,6 +15,7 @@ func (am AppModule) AutoCLIOptions() *autocliv1.ModuleOptions {
 				{
 					RpcMethod: "Params",
 					Use:       "params",
+					Skip:      true,
 					Short:     "Shows the parameters of the module",
 				},
 				{
@@ -41,20 +42,21 @@ func (am AppModule) AutoCLIOptions() *autocliv1.ModuleOptions {
 				},
 				{
 					RpcMethod:      "CreateId",
-					Use:            "create-id [did] [hash] [owner] [username]",
-					Short:          "Create a new Id",
-					PositionalArgs: []*autocliv1.PositionalArgDescriptor{{ProtoField: "did"}, {ProtoField: "hash"}, {ProtoField: "owner"}, {ProtoField: "username"}},
+					Use:            "create-id [hash] [username]",
+					Short:          "Create a new ID",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{{ProtoField: "hash"}, {ProtoField: "username"}},
 				},
 				{
 					RpcMethod:      "UpdateId",
-					Use:            "update-id [did] [hash] [owner] [username]",
+					Use:            "update-id [did] [hash] [owner] ",
 					Short:          "Update Id",
-					PositionalArgs: []*autocliv1.PositionalArgDescriptor{{ProtoField: "did"}, {ProtoField: "hash"}, {ProtoField: "owner"}, {ProtoField: "username"}},
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{{ProtoField: "did"}, {ProtoField: "hash"}, {ProtoField: "owner"}},
 				},
 				{
 					RpcMethod:      "DeleteId",
 					Use:            "delete-id [did]",
 					Short:          "Delete Id",
+					Skip:           true,
 					PositionalArgs: []*autocliv1.PositionalArgDescriptor{{ProtoField: "did"}},
 				},
 				// this line is used by ignite scaffolding # autocli/tx
