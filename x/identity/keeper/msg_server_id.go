@@ -118,10 +118,10 @@ func (k msgServer) DeleteId(goCtx context.Context, msg *types.MsgDeleteId) (*typ
 		return nil, errorsmod.Wrap(sdkerrors.ErrUnauthorized, "incorrect owner")
 	}
 
-	k.RemoveId(
-		ctx,
-		msg.Did,
-	)
+	// k.RemoveId(
+	// 	ctx,
+	// 	msg.Did,
+	// )
 
 	return &types.MsgDeleteIdResponse{}, nil
 }
