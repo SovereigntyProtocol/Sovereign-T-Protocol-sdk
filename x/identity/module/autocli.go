@@ -16,17 +16,16 @@ func (am AppModule) AutoCLIOptions() *autocliv1.ModuleOptions {
 					RpcMethod: "Params",
 					Use:       "params",
 					Short:     "Shows the parameters of the module",
-					Skip:      true,
 				},
 				{
 					RpcMethod: "IdAll",
 					Use:       "list-id",
-					Short:     "List all ID",
+					Short:     "List all Id",
 				},
 				{
 					RpcMethod:      "Id",
 					Use:            "show-id [id]",
-					Short:          "Shows a ID",
+					Short:          "Shows a Id",
 					PositionalArgs: []*autocliv1.PositionalArgDescriptor{{ProtoField: "did"}},
 				},
 				// this line is used by ignite scaffolding # autocli/query
@@ -42,21 +41,20 @@ func (am AppModule) AutoCLIOptions() *autocliv1.ModuleOptions {
 				},
 				{
 					RpcMethod:      "CreateId",
-					Use:            "create-id [hash] [username]",
-					Short:          "Create a new ID",
-					PositionalArgs: []*autocliv1.PositionalArgDescriptor{{ProtoField: "hash"}, {ProtoField: "username"}},
+					Use:            "create-id [did] [hash] [owner] [username]",
+					Short:          "Create a new Id",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{{ProtoField: "did"}, {ProtoField: "hash"}, {ProtoField: "owner"}, {ProtoField: "username"}},
 				},
 				{
 					RpcMethod:      "UpdateId",
-					Use:            "update-id [did] [hash] [owner] ",
-					Short:          "Update ID",
-					PositionalArgs: []*autocliv1.PositionalArgDescriptor{{ProtoField: "did"}, {ProtoField: "hash"}, {ProtoField: "owner"}},
+					Use:            "update-id [did] [hash] [owner] [username]",
+					Short:          "Update Id",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{{ProtoField: "did"}, {ProtoField: "hash"}, {ProtoField: "owner"}, {ProtoField: "username"}},
 				},
 				{
 					RpcMethod:      "DeleteId",
 					Use:            "delete-id [did]",
-					Short:          "Delete ID",
-					Skip:           true,
+					Short:          "Delete Id",
 					PositionalArgs: []*autocliv1.PositionalArgDescriptor{{ProtoField: "did"}},
 				},
 				// this line is used by ignite scaffolding # autocli/tx

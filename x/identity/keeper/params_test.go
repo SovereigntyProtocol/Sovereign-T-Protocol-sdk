@@ -6,7 +6,6 @@ import (
 	"github.com/stretchr/testify/require"
 
 	keepertest "github.com/cosmos/cosmos-sdk/testutil/keeper"
-
 	"github.com/cosmos/cosmos-sdk/x/identity/types"
 )
 

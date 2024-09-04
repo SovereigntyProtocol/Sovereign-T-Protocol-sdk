@@ -3,10 +3,10 @@ package identity_test
 import (
 	"testing"
 
-	keepertest "github.com/cosmos/cosmos-sdk/testutil/keeper"
-	"github.com/cosmos/cosmos-sdk/testutil/nullify"
-	identity "github.com/cosmos/cosmos-sdk/x/identity/module"
-	"github.com/cosmos/cosmos-sdk/x/identity/types"
+	keepertest "identity/testutil/keeper"
+	"identity/testutil/nullify"
+	identity "identity/x/identity/module"
+	"identity/x/identity/types"
 
 	"github.com/stretchr/testify/require"
 )
