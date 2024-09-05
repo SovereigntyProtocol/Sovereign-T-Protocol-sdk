@@ -13,16 +13,16 @@ import (
 func (k msgServer) CreateId(goCtx context.Context, msg *types.MsgCreateId) (*types.MsgCreateIdResponse, error) {
 	ctx := sdk.UnwrapSDKContext(goCtx)
 
-	newDid, diderr := types.CreateNewDid()
+	_, diderr := types.CreateNewDid()
 
 	if diderr != nil {
 		return nil, errorsmod.Wrap(diderr, "did error, please try again")
 	}
 
-	_, isFound := k.GetIdByUniqueKey(ctx, newDid)
-	if isFound {
-		return nil, errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "index already set")
-	}
+	// _, isFound := k.GetIdByUniqueKey(ctx, newDid)
+	// if isFound {
+	// 	return nil, errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "index already set")
+	// }
 
 	// _, isUserNameFound := k.GetIdByUniqueKey(ctx, msg.Username)
 	// if isUserNameFound {
@@ -36,7 +36,7 @@ func (k msgServer) CreateId(goCtx context.Context, msg *types.MsgCreateId) (*typ
 
 	var id = types.Id{
 		Creator:  msg.Creator,
-		Did:      newDid,
+		Did:      "kkk",
 		Hash:     msg.Hash,
 		Username: msg.Username,
 	}
