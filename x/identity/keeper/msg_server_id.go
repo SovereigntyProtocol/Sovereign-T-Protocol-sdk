@@ -19,10 +19,10 @@ func (k msgServer) CreateId(goCtx context.Context, msg *types.MsgCreateId) (*typ
 		return nil, errorsmod.Wrap(diderr, "did error, please try again")
 	}
 
-	// _, isFound := k.GetIdByUniqueKey(ctx, newDid)
-	// if isFound {
-	// 	return nil, errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "index already set")
-	// }
+	_, isFound := k.GetIdByUniqueKey(ctx, "kkk")
+	if isFound {
+		return nil, errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "index already set")
+	}
 
 	// _, isUserNameFound := k.GetIdByUniqueKey(ctx, msg.Username)
 	// if isUserNameFound {
