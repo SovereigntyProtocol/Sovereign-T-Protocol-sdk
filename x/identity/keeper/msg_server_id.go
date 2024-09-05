@@ -24,15 +24,15 @@ func (k msgServer) CreateId(goCtx context.Context, msg *types.MsgCreateId) (*typ
 		return nil, errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "index already set")
 	}
 
-	_, isUserNameFound := k.GetIdByUniqueKey(ctx, msg.Username)
-	if isUserNameFound {
-		return nil, errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "username already set")
-	}
+	// _, isUserNameFound := k.GetIdByUniqueKey(ctx, msg.Username)
+	// if isUserNameFound {
+	// 	return nil, errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "username already set")
+	// }
 
-	_, isCreatorFound := k.GetIdByUniqueKey(ctx, msg.Creator)
-	if isCreatorFound {
-		return nil, errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "wallet already set")
-	}
+	// _, isCreatorFound := k.GetIdByUniqueKey(ctx, msg.Creator)
+	// if isCreatorFound {
+	// 	return nil, errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "wallet already set")
+	// }
 
 	var id = types.Id{
 		Creator:  msg.Creator,

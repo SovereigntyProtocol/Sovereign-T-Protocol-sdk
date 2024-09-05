@@ -19,23 +19,23 @@ func (k Keeper) SetId(ctx context.Context, id types.Id) {
 	didkey := types.IdKey(id.Did)
 	store.Set(didkey, b)
 
-	var usernamekey = types.Uniquekey{
-		Key:    id.Username,
-		Unikey: didkey,
-	}
-	k.SetUniquekey(ctx, usernamekey)
+	// var usernamekey = types.Uniquekey{
+	// 	Key:    id.Username,
+	// 	Unikey: didkey,
+	// }
+	// k.SetUniquekey(ctx, usernamekey)
 
-	var creatorkey = types.Uniquekey{
-		Key:    id.Creator,
-		Unikey: didkey,
-	}
-	k.SetUniquekey(ctx, creatorkey)
+	// var creatorkey = types.Uniquekey{
+	// 	Key:    id.Creator,
+	// 	Unikey: didkey,
+	// }
+	// k.SetUniquekey(ctx, creatorkey)
 
-	var didkey2 = types.Uniquekey{
-		Key:    id.Did,
-		Unikey: didkey,
-	}
-	k.SetUniquekey(ctx, didkey2)
+	// var didkey2 = types.Uniquekey{
+	// 	Key:    id.Did,
+	// 	Unikey: didkey,
+	// }
+	// k.SetUniquekey(ctx, didkey2)
 }
 
 // GetId returns a id from its index
