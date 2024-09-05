@@ -9,11 +9,6 @@ const (
 	IdKeyPrefix = "Id/value/"
 )
 
-const (
-	// IdKeyPrefix is the prefix to retrieve all Id
-	UniqueIdKeyPrefix = "Uniqueid/value/"
-)
-
 // IdKey returns the store key to retrieve a Id from the index fields
 func IdKey(
 	did string,

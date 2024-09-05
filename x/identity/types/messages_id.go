@@ -30,20 +30,6 @@ func (msg *MsgCreateId) ValidateBasic() error {
 	if err != nil {
 		return errorsmod.Wrapf(sdkerrors.ErrInvalidAddress, "invalid creator address (%s)", err)
 	}
-
-	// _, diderr := VerifyDidFormat(msg.Did)
-	// if diderr != nil {
-	// 	return errorsmod.Wrapf(sdkerrors.ErrInvalidRequest, "invalid params (%s)", diderr)
-	// }
-
-	if msg.Hash == "" {
-		return errorsmod.Wrapf(sdkerrors.ErrInvalidRequest, "invalid user's hash")
-	}
-
-	if msg.Username == "" {
-		return errorsmod.Wrapf(sdkerrors.ErrInvalidRequest, "invalid username")
-	}
-
 	return nil
 }
 
@@ -71,11 +57,6 @@ func (msg *MsgUpdateId) ValidateBasic() error {
 	if err != nil {
 		return errorsmod.Wrapf(sdkerrors.ErrInvalidAddress, "invalid creator address (%s)", err)
 	}
-
-	if msg.Hash == "" {
-		return errorsmod.Wrapf(sdkerrors.ErrInvalidRequest, "invalid user's hash")
-	}
-
 	return nil
 }
 
@@ -93,10 +74,9 @@ func NewMsgDeleteId(
 }
 
 func (msg *MsgDeleteId) ValidateBasic() error {
-	return errorsmod.Wrapf(sdkerrors.ErrUnauthorized, "not allowed")
-	// _, err := sdk.AccAddressFromBech32(msg.Creator)
-	// if err != nil {
-	// 	return errorsmod.Wrapf(sdkerrors.ErrInvalidAddress, "invalid creator address (%s)", err)
-	// }
-	// return nil
+	_, err := sdk.AccAddressFromBech32(msg.Creator)
+	if err != nil {
+		return errorsmod.Wrapf(sdkerrors.ErrInvalidAddress, "invalid creator address (%s)", err)
+	}
+	return nil
 }

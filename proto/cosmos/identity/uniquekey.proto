@@ -1,0 +1,10 @@
+syntax = "proto3";
+package identity.identity;
+
+option go_package = "identity/x/identity/types";
+
+message Uniquekey {
+  string key = 1; 
+  bytes unikey = 2;
+}
+
