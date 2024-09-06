@@ -1,7 +1,6 @@
-package types
+package keeper
 
 import (
-	"encoding/hex"
 	"errors"
 	"fmt"
 	"strings"
@@ -25,14 +24,14 @@ var networkNames = map[string]string{
 }
 
 const AccAddprifix = "ssi"
-const network = "4"
+const network = "5"
 
 func GetDefaultDidPrefix(networkID string) string {
-	networkName, exists := networkNames[networkID]
-	if !exists {
-		networkName = "UnknownNetwork" // or handle the error as needed
-	}
-	return "did:sovid:" + networkName + ":"
+	// _, exists := networkNames[networkID]
+	// if !exists {
+	// 	networkName = "UnknownNetwork" // or handle the error as needed
+	// }
+	return "did:sovid:"
 }
 
 // findDividerInDid finds the divider "1" in the string and return all characters before "1"
@@ -133,7 +132,7 @@ func VerifyDidFormat(did string) (bool, error) {
 	return true, nil
 }
 
-func CreateNewDid() (string, error) {
+func (k msgServer) CreateNewDid() (string, error) {
 
 	privKey := secp256k1.GenPrivKey()
 
@@ -146,16 +145,16 @@ func CreateNewDid() (string, error) {
 	// Encode the address using Bech32
 	bech32Address := address.String()
 
-	fmt.Printf("New address: %s\n", bech32Address)
+	sepIndex := strings.LastIndex(bech32Address, "1")
 
-	_, data, err := bech32.DecodeAndConvert(bech32Address)
-	dataString := hex.EncodeToString(data)
-
-	if err != nil {
-		return "", err
+	if sepIndex == -1 {
+		return "", fmt.Errorf("invalid Bech32 address")
 	}
-	didprefix := GetDefaultDidPrefix(network)
 
-	return didprefix + "1" + dataString, nil
+	// prefix := bech32Address[:sepIndex]
+	actualAddress := bech32Address[sepIndex+1:]
+	didprefix := GetDefaultDidPrefix("5")
+
+	return didprefix + "1" + actualAddress, nil
 
 }

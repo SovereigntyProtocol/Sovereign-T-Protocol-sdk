@@ -15,13 +15,13 @@ func (k msgServer) CreateId(goCtx context.Context, msg *types.MsgCreateId) (*typ
 
 	// Check if the value already exists
 
-	// _, diderr := types.CreateNewDid()
+	newdid, diderr := k.CreateNewDid()
 
-	// if diderr != nil {
-	// 	return nil, errorsmod.Wrap(diderr, "did error, please try again")
-	// }
+	if diderr != nil {
+		return nil, errorsmod.Wrap(diderr, "did error, please try again")
+	}
 
-	_, isFound := k.GetIdByDidorUsernameorCreator(ctx, msg.Did)
+	_, isFound := k.GetIdByDidorUsernameorCreator(ctx, newdid)
 	if isFound {
 		return nil, errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "index already set")
 	}
@@ -38,7 +38,7 @@ func (k msgServer) CreateId(goCtx context.Context, msg *types.MsgCreateId) (*typ
 
 	var id = types.Id{
 		Creator:  msg.Creator,
-		Did:      msg.Did,
+		Did:      newdid,
 		Hash:     msg.Hash,
 		Username: msg.Username,
 	}
