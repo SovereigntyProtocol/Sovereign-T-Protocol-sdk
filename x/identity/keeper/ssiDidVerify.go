@@ -7,6 +7,9 @@ import (
 
 	// "github.com/cosmos/cosmos-sdk/crypto/keys/secp256k1"
 	// sdk "github.com/cosmos/cosmos-sdk/types"
+	"crypto/sha256"
+	"encoding/hex"
+
 	"github.com/cosmos/cosmos-sdk/types/bech32"
 )
 
@@ -130,4 +133,10 @@ func VerifyDidFormat(did string) (bool, error) {
 	}
 
 	return true, nil
+}
+
+func (k Keeper) generateShortDeterministicUserID(input string, length int) string {
+	hash := sha256.Sum256([]byte(input))
+	truncatedHash := hex.EncodeToString(hash[:length/2]) // half the length because 2 hex chars represent 1 byte
+	return "did:sovid:" + truncatedHash
 }

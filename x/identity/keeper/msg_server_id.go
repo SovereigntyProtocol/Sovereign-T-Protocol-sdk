@@ -8,21 +8,14 @@ import (
 	errorsmod "cosmossdk.io/errors"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
-
-	"crypto/sha256"
-	"encoding/hex"
 )
-
-func generateSecureRandomID(input string, length int) string {
-	hash := sha256.Sum256([]byte(input))
-	truncatedHash := hex.EncodeToString(hash[:length/2]) // half the length because 2 hex chars represent 1 byte
-	return "did:sovid:" + truncatedHash
-}
 
 func (k msgServer) CreateId(goCtx context.Context, msg *types.MsgCreateId) (*types.MsgCreateIdResponse, error) {
 	ctx := sdk.UnwrapSDKContext(goCtx)
 
-	newdid := generateSecureRandomID(msg.Creator, 40)
+	txtime := ctx.BlockTime().String()
+
+	newdid := k.generateShortDeterministicUserID(msg.Creator+msg.Username+txtime, 40)
 
 	_, isFound := k.GetIdByDidorUsernameorCreator(ctx, newdid)
 	if isFound {

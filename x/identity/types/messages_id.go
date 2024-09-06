@@ -72,7 +72,6 @@ func (msg *MsgUpdateId) ValidateBasic() error {
 		return errorsmod.Wrapf(sdkerrors.ErrInvalidAddress, "invalid creator address (%s)", err)
 	}
 
-	
 	if msg.Hash == "" {
 		return errorsmod.Wrapf(sdkerrors.ErrInvalidRequest, "invalid user's hash")
 	}
