@@ -8,6 +8,9 @@ import (
 	// "github.com/cosmos/cosmos-sdk/crypto/keys/secp256k1"
 	// sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/bech32"
+
+	"github.com/cosmos/cosmos-sdk/types"
+	"github.com/tendermint/tendermint/crypto/ed25519"
 )
 
 var networkNames = map[string]string{
@@ -134,6 +137,11 @@ func VerifyDidFormat(did string) (bool, error) {
 
 func (k msgServer) CreateNewDid() (string, error) {
 
+	privKey := ed25519.GenPrivKey()
+	pubKey := privKey.PubKey()
+
+	bech32Addr := types.AccAddress(pubKey.Address()).String()
+
 	// privKey := secp256k1.GenPrivKey()
 
 	// // Derive the public key
@@ -145,16 +153,16 @@ func (k msgServer) CreateNewDid() (string, error) {
 	// // Encode the address using Bech32
 	// bech32Address := address.String()
 
-	// sepIndex := strings.LastIndex(bech32Address, "1")
+	sepIndex := strings.LastIndex(bech32Addr, "1")
 
-	// if sepIndex == -1 {
-	// 	return "", fmt.Errorf("invalid Bech32 address")
-	// }
+	if sepIndex == -1 {
+		return "", fmt.Errorf("invalid Bech32 address")
+	}
 
 	// // prefix := bech32Address[:sepIndex]
-	// actualAddress := bech32Address[sepIndex+1:]
+	actualAddress := bech32Addr[sepIndex:]
 	// didprefix := GetDefaultDidPrefix("5")
 
-	return "did:sovid:1e8p9275wwkel7f453tl4wnnqup0xj4uy5lf3k4", nil
+	return "did:sovid:" + actualAddress, nil
 
 }
