@@ -9,8 +9,8 @@ import (
 	// sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/bech32"
 
-	"github.com/cosmos/cosmos-sdk/crypto/keys/ed25519"
-	"github.com/cosmos/cosmos-sdk/types"
+	"crypto/rand"
+	"math/big"
 )
 
 var networkNames = map[string]string{
@@ -135,34 +135,26 @@ func VerifyDidFormat(did string) (bool, error) {
 	return true, nil
 }
 
-func (k msgServer) CreateNewDid() (string, error) {
+const charset = "abcdefghijklmnopqrstuvwxyz" +
+	"ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
+	"0123456789"
 
-	privKey := ed25519.GenPrivKey()
-	pubKey := privKey.PubKey()
-
-	bech32Addr := types.AccAddress(pubKey.Address()).String()
-
-	// privKey := secp256k1.GenPrivKey()
-
-	// // Derive the public key
-	// pubKey := privKey.PubKey()
-
-	// // Generate the address using the public key
-	// address := sdk.AccAddress(pubKey.Address().Bytes())
-
-	// // Encode the address using Bech32
-	// bech32Address := address.String()
-
-	sepIndex := strings.LastIndex(bech32Addr, "1")
-
-	if sepIndex == -1 {
-		return "", fmt.Errorf("invalid Bech32 address")
+func generateSecureRandomID(length int) (string, error) {
+	b := make([]byte, length)
+	for i := range b {
+		num, err := rand.Int(rand.Reader, big.NewInt(int64(len(charset))))
+		if err != nil {
+			return "", err
+		}
+		b[i] = charset[num.Int64()]
 	}
+	return string(b), nil
+}
 
-	// // prefix := bech32Address[:sepIndex]
-	actualAddress := bech32Addr[sepIndex:]
-	// didprefix := GetDefaultDidPrefix("5")
-
-	return "did:sovid:" + actualAddress, nil
-
+func (k msgServer) CreateNewDid() (string, error) {
+	randomID, err := generateSecureRandomID(40)
+	if err != nil {
+		return "", fmt.Errorf("could not generate ID")
+	}
+	return "did:sovid:" + randomID, nil
 }
