@@ -9,8 +9,7 @@ import (
 	// sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/bech32"
 
-	"crypto/rand"
-	"math/big"
+	
 )
 
 var networkNames = map[string]string{
@@ -135,21 +134,9 @@ func VerifyDidFormat(did string) (bool, error) {
 	return true, nil
 }
 
-const charset = "abcdefghijklmnopqrstuvwxyz" +
-	"ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
-	"0123456789"
 
-func generateSecureRandomID(length int) (string, error) {
-	b := make([]byte, length)
-	for i := range b {
-		num, err := rand.Int(rand.Reader, big.NewInt(int64(len(charset))))
-		if err != nil {
-			return "", err
-		}
-		b[i] = charset[num.Int64()]
-	}
-	return string(b), nil
-}
+
+
 
 func (k msgServer) CreateNewDid() (string, error) {
 	randomID, err := generateSecureRandomID(40)
