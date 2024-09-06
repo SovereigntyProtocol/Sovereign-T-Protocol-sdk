@@ -9,35 +9,20 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 
-	"crypto/rand"
-	"math/big"
+	"crypto/sha256"
+	"encoding/hex"
 )
 
-func generateSecureRandomID(length int) (string, error) {
-	const charset = "abcdefghijklmnopqrstuvwxyz" +
-		"ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
-		"0123456789"
-	b := make([]byte, length)
-	for i := range b {
-		num, err := rand.Int(rand.Reader, big.NewInt(int64(len(charset))))
-		if err != nil {
-			return "", err
-		}
-		b[i] = charset[num.Int64()]
-	}
-	return "did:sovid:" + string(b), nil
+func generateSecureRandomID(input string, length int) string {
+	hash := sha256.Sum256([]byte(input))
+	truncatedHash := hex.EncodeToString(hash[:length/2]) // half the length because 2 hex chars represent 1 byte
+	return "did:sovid:" + truncatedHash
 }
 
 func (k msgServer) CreateId(goCtx context.Context, msg *types.MsgCreateId) (*types.MsgCreateIdResponse, error) {
 	ctx := sdk.UnwrapSDKContext(goCtx)
 
-	// Check if the value already exists
-
-	newdid, diderr := generateSecureRandomID(40)
-
-	if diderr != nil {
-		return nil, errorsmod.Wrap(diderr, "did error, please try again")
-	}
+	newdid := generateSecureRandomID(msg.Creator, 40)
 
 	_, isFound := k.GetIdByDidorUsernameorCreator(ctx, newdid)
 	if isFound {

@@ -8,8 +8,6 @@ import (
 	// "github.com/cosmos/cosmos-sdk/crypto/keys/secp256k1"
 	// sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/bech32"
-
-	
 )
 
 var networkNames = map[string]string{
@@ -132,16 +130,4 @@ func VerifyDidFormat(did string) (bool, error) {
 	}
 
 	return true, nil
-}
-
-
-
-
-
-func (k msgServer) CreateNewDid() (string, error) {
-	randomID, err := generateSecureRandomID(40)
-	if err != nil {
-		return "", fmt.Errorf("could not generate ID")
-	}
-	return "did:sovid:" + randomID, nil
 }
