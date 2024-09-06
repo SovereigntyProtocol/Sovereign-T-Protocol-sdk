@@ -146,6 +146,8 @@ func CreateNewDid() (string, error) {
 	// Encode the address using Bech32
 	bech32Address := address.String()
 
+	fmt.Printf("New address: %s\n", bech32Address)
+
 	_, data, err := bech32.DecodeAndConvert(bech32Address)
 	dataString := hex.EncodeToString(data)
 

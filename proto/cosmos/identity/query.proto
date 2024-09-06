@@ -8,9 +8,8 @@ import "google/api/annotations.proto";
 import "cosmos/base/query/v1beta1/pagination.proto";
 import "cosmos/identity/params.proto";
 import "cosmos/identity/id.proto";
-import "cosmos/identity/uniquekey.proto";
 
-option go_package = "identity/x/identity/types";
+option go_package = "github.com/cosmos/cosmos-sdk/x/identity/types";
 
 // Query defines the gRPC querier service.
 service Query {
@@ -28,16 +27,6 @@ service Query {
   }
   rpc IdAll (QueryAllIdRequest) returns (QueryAllIdResponse) {
     option (google.api.http).get = "/identity/identity/id";
-  
-  }
-  
-  // Queries a list of Uniquekey items.
-  rpc Uniquekey    (QueryGetUniquekeyRequest) returns (QueryGetUniquekeyResponse) {
-    option (google.api.http).get = "/identity/identity/uniquekey/{key}";
-  
-  }
-  rpc UniquekeyAll (QueryAllUniquekeyRequest) returns (QueryAllUniquekeyResponse) {
-    option (google.api.http).get = "/identity/identity/uniquekey";
   
   }
 }
@@ -65,23 +54,6 @@ message QueryAllIdRequest {
 
 message QueryAllIdResponse {
   repeated Id                                     id         = 1 [(gogoproto.nullable) = false];
-           cosmos.base.query.v1beta1.PageResponse pagination = 2;
-}
-
-message QueryGetUniquekeyRequest {
-  string key = 1;
-}
-
-message QueryGetUniquekeyResponse {
-  Uniquekey uniquekey = 1 [(gogoproto.nullable) = false];
-}
-
-message QueryAllUniquekeyRequest {
-  cosmos.base.query.v1beta1.PageRequest pagination = 1;
-}
-
-message QueryAllUniquekeyResponse {
-  repeated Uniquekey                              uniquekey  = 1 [(gogoproto.nullable) = false];
            cosmos.base.query.v1beta1.PageResponse pagination = 2;
 }
 

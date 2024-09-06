@@ -23,14 +23,6 @@ func TestGenesis(t *testing.T) {
 				Did: "1",
 			},
 		},
-		UniquekeyList: []types.Uniquekey{
-			{
-				Key: "0",
-			},
-			{
-				Key: "1",
-			},
-		},
 		// this line is used by starport scaffolding # genesis/test/state
 	}
 
@@ -43,6 +35,5 @@ func TestGenesis(t *testing.T) {
 	nullify.Fill(got)
 
 	require.ElementsMatch(t, genesisState.IdList, got.IdList)
-	require.ElementsMatch(t, genesisState.UniquekeyList, got.UniquekeyList)
 	// this line is used by starport scaffolding # genesis/test/assert
 }

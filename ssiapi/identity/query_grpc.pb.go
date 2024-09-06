@@ -19,11 +19,9 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	Query_Params_FullMethodName       = "/identity.identity.Query/Params"
-	Query_Id_FullMethodName           = "/identity.identity.Query/Id"
-	Query_IdAll_FullMethodName        = "/identity.identity.Query/IdAll"
-	Query_Uniquekey_FullMethodName    = "/identity.identity.Query/Uniquekey"
-	Query_UniquekeyAll_FullMethodName = "/identity.identity.Query/UniquekeyAll"
+	Query_Params_FullMethodName = "/identity.identity.Query/Params"
+	Query_Id_FullMethodName     = "/identity.identity.Query/Id"
+	Query_IdAll_FullMethodName  = "/identity.identity.Query/IdAll"
 )
 
 // QueryClient is the client API for Query service.
@@ -35,9 +33,6 @@ type QueryClient interface {
 	// Queries a list of Id items.
 	Id(ctx context.Context, in *QueryGetIdRequest, opts ...grpc.CallOption) (*QueryGetIdResponse, error)
 	IdAll(ctx context.Context, in *QueryAllIdRequest, opts ...grpc.CallOption) (*QueryAllIdResponse, error)
-	// Queries a list of Uniquekey items.
-	Uniquekey(ctx context.Context, in *QueryGetUniquekeyRequest, opts ...grpc.CallOption) (*QueryGetUniquekeyResponse, error)
-	UniquekeyAll(ctx context.Context, in *QueryAllUniquekeyRequest, opts ...grpc.CallOption) (*QueryAllUniquekeyResponse, error)
 }
 
 type queryClient struct {
@@ -75,24 +70,6 @@ func (c *queryClient) IdAll(ctx context.Context, in *QueryAllIdRequest, opts ...
 	return out, nil
 }
 
-func (c *queryClient) Uniquekey(ctx context.Context, in *QueryGetUniquekeyRequest, opts ...grpc.CallOption) (*QueryGetUniquekeyResponse, error) {
-	out := new(QueryGetUniquekeyResponse)
-	err := c.cc.Invoke(ctx, Query_Uniquekey_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *queryClient) UniquekeyAll(ctx context.Context, in *QueryAllUniquekeyRequest, opts ...grpc.CallOption) (*QueryAllUniquekeyResponse, error) {
-	out := new(QueryAllUniquekeyResponse)
-	err := c.cc.Invoke(ctx, Query_UniquekeyAll_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 // QueryServer is the server API for Query service.
 // All implementations must embed UnimplementedQueryServer
 // for forward compatibility
@@ -102,9 +79,6 @@ type QueryServer interface {
 	// Queries a list of Id items.
 	Id(context.Context, *QueryGetIdRequest) (*QueryGetIdResponse, error)
 	IdAll(context.Context, *QueryAllIdRequest) (*QueryAllIdResponse, error)
-	// Queries a list of Uniquekey items.
-	Uniquekey(context.Context, *QueryGetUniquekeyRequest) (*QueryGetUniquekeyResponse, error)
-	UniquekeyAll(context.Context, *QueryAllUniquekeyRequest) (*QueryAllUniquekeyResponse, error)
 	mustEmbedUnimplementedQueryServer()
 }
 
@@ -120,12 +94,6 @@ func (UnimplementedQueryServer) Id(context.Context, *QueryGetIdRequest) (*QueryG
 }
 func (UnimplementedQueryServer) IdAll(context.Context, *QueryAllIdRequest) (*QueryAllIdResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method IdAll not implemented")
-}
-func (UnimplementedQueryServer) Uniquekey(context.Context, *QueryGetUniquekeyRequest) (*QueryGetUniquekeyResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Uniquekey not implemented")
-}
-func (UnimplementedQueryServer) UniquekeyAll(context.Context, *QueryAllUniquekeyRequest) (*QueryAllUniquekeyResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UniquekeyAll not implemented")
 }
 func (UnimplementedQueryServer) mustEmbedUnimplementedQueryServer() {}
 
@@ -194,42 +162,6 @@ func _Query_IdAll_Handler(srv interface{}, ctx context.Context, dec func(interfa
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Query_Uniquekey_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(QueryGetUniquekeyRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(QueryServer).Uniquekey(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Query_Uniquekey_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(QueryServer).Uniquekey(ctx, req.(*QueryGetUniquekeyRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Query_UniquekeyAll_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(QueryAllUniquekeyRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(QueryServer).UniquekeyAll(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Query_UniquekeyAll_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(QueryServer).UniquekeyAll(ctx, req.(*QueryAllUniquekeyRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 // Query_ServiceDesc is the grpc.ServiceDesc for Query service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -248,14 +180,6 @@ var Query_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "IdAll",
 			Handler:    _Query_IdAll_Handler,
-		},
-		{
-			MethodName: "Uniquekey",
-			Handler:    _Query_Uniquekey_Handler,
-		},
-		{
-			MethodName: "UniquekeyAll",
-			Handler:    _Query_UniquekeyAll_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

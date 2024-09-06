@@ -25,9 +25,9 @@ func (k Keeper) IdAll(ctx context.Context, req *types.QueryAllIdRequest) (*types
 	pageRes, err := query.Paginate(idStore, req.Pagination, func(key []byte, value []byte) error {
 		var id types.Id
 		if err := k.cdc.Unmarshal(value, &id); err != nil {
-			return err
+			k.Logger().Error("Failed to unmarshal user", "key", key, "error", err)
+			return nil
 		}
-
 		ids = append(ids, id)
 		return nil
 	})
@@ -44,7 +44,7 @@ func (k Keeper) Id(ctx context.Context, req *types.QueryGetIdRequest) (*types.Qu
 		return nil, status.Error(codes.InvalidArgument, "invalid request")
 	}
 
-	val, found := k.GetId(
+	val, found := k.GetIdByDidorUsernameorCreator(
 		ctx,
 		req.Did,
 	)

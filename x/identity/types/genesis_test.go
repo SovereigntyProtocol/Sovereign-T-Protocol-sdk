@@ -31,14 +31,6 @@ func TestGenesisState_Validate(t *testing.T) {
 						Did: "1",
 					},
 				},
-				UniquekeyList: []types.Uniquekey{
-					{
-						Key: "0",
-					},
-					{
-						Key: "1",
-					},
-				},
 				// this line is used by starport scaffolding # types/genesis/validField
 			},
 			valid: true,
@@ -52,20 +44,6 @@ func TestGenesisState_Validate(t *testing.T) {
 					},
 					{
 						Did: "0",
-					},
-				},
-			},
-			valid: false,
-		},
-		{
-			desc: "duplicated uniquekey",
-			genState: &types.GenesisState{
-				UniquekeyList: []types.Uniquekey{
-					{
-						Key: "0",
-					},
-					{
-						Key: "0",
 					},
 				},
 			},

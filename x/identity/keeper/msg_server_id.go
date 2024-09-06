@@ -13,23 +13,25 @@ import (
 func (k msgServer) CreateId(goCtx context.Context, msg *types.MsgCreateId) (*types.MsgCreateIdResponse, error) {
 	ctx := sdk.UnwrapSDKContext(goCtx)
 
-	_, diderr := types.CreateNewDid()
+	// Check if the value already exists
 
-	if diderr != nil {
-		return nil, errorsmod.Wrap(diderr, "did error, please try again")
-	}
+	// _, diderr := types.CreateNewDid()
 
-	_, isFound := k.GetIdByUniqueKey(ctx, msg.Did)
+	// if diderr != nil {
+	// 	return nil, errorsmod.Wrap(diderr, "did error, please try again")
+	// }
+
+	_, isFound := k.GetIdByDidorUsernameorCreator(ctx, msg.Did)
 	if isFound {
 		return nil, errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "index already set")
 	}
 
-	_, isUserNameFound := k.GetIdByUniqueKey(ctx, msg.Username)
+	_, isUserNameFound := k.GetIdByDidorUsernameorCreator(ctx, msg.Username)
 	if isUserNameFound {
 		return nil, errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "username already set")
 	}
 
-	_, isCreatorFound := k.GetIdByUniqueKey(ctx, msg.Creator)
+	_, isCreatorFound := k.GetIdByDidorUsernameorCreator(ctx, msg.Creator)
 	if isCreatorFound {
 		return nil, errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "wallet already set")
 	}
@@ -50,9 +52,9 @@ func (k msgServer) CreateId(goCtx context.Context, msg *types.MsgCreateId) (*typ
 
 func (k msgServer) UpdateId(goCtx context.Context, msg *types.MsgUpdateId) (*types.MsgUpdateIdResponse, error) {
 	ctx := sdk.UnwrapSDKContext(goCtx)
-
+	var owner string
 	// Check if the value exists
-	valFound, isFound := k.GetId(
+	valFound, isFound := k.GetIdByDidorUsernameorCreator(
 		ctx,
 		msg.Did,
 	)
@@ -65,15 +67,37 @@ func (k msgServer) UpdateId(goCtx context.Context, msg *types.MsgUpdateId) (*typ
 		return nil, errorsmod.Wrap(sdkerrors.ErrUnauthorized, "incorrect owner")
 	}
 
-	var id = types.Id{
-		Creator:  msg.Creator,
-		Did:      msg.Did,
-		Hash:     msg.Hash,
-		Owner:    msg.Owner,
-		Username: msg.Username,
+	if msg.Hash == valFound.Hash {
+		return nil, errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "hash invalid")
 	}
 
-	k.SetId(ctx, id)
+	_, isCreatorFound := k.GetIdByDidorUsernameorCreator(ctx, msg.Owner)
+	if isCreatorFound {
+		return nil, errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "wallet already set")
+	}
+
+	if msg.Owner == "" {
+		owner = valFound.Creator
+	}
+
+	if msg.Owner != "" {
+		_, Ownererr := sdk.AccAddressFromBech32(msg.Owner)
+		if Ownererr != nil {
+			return nil, errorsmod.Wrap(sdkerrors.ErrInvalidAddress, "invalid new creator address")
+		} else {
+			owner = msg.Owner
+		}
+	}
+
+	oldCreator := valFound.Creator
+	var id = types.Id{
+		Creator:  owner,
+		Did:      valFound.Did,
+		Hash:     msg.Hash,
+		Username: valFound.Username,
+	}
+
+	k.UpdateUserId(ctx, id, oldCreator)
 
 	return &types.MsgUpdateIdResponse{}, nil
 }
@@ -95,10 +119,10 @@ func (k msgServer) DeleteId(goCtx context.Context, msg *types.MsgDeleteId) (*typ
 		return nil, errorsmod.Wrap(sdkerrors.ErrUnauthorized, "incorrect owner")
 	}
 
-	k.RemoveId(
-		ctx,
-		msg.Did,
-	)
+	// k.RemoveId(
+	// 	ctx,
+	// 	msg.Did,
+	// )
 
 	return &types.MsgDeleteIdResponse{}, nil
 }

@@ -9,7 +9,7 @@ import "gogoproto/gogo.proto";
 import "cosmos/identity/params.proto";
 import "cosmos/identity/id.proto";
 
-option go_package = "identity/x/identity/types";
+option go_package = "github.com/cosmos/cosmos-sdk/x/identity/types";
 
 // Msg defines the Msg service.
 service Msg {
