@@ -35,7 +35,6 @@ func (k Keeper) UpdateUserId(ctx context.Context, id types.Id, oldCreator string
 	b := k.cdc.MustMarshal(&id)
 
 	uniquekey := types.IdKey(id.Did + ":" + id.Username)
-
 	uniquestore.Delete(types.IdKey(oldCreator))
 
 	store.Set(uniquekey, b)
@@ -45,7 +44,6 @@ func (k Keeper) UpdateUserId(ctx context.Context, id types.Id, oldCreator string
 	uniquestore.Set(types.IdKey(id.Creator), uniquekey)
 
 	uniquestore.Set(types.IdKey(id.Username), uniquekey)
-
 }
 
 // GetId returns a id from its index

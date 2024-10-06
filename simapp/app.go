@@ -168,13 +168,12 @@ type SimApp struct {
 	NFTKeeper             nftkeeper.Keeper
 	ConsensusParamsKeeper consensusparamkeeper.Keeper
 	CircuitKeeper         circuitkeeper.Keeper
+	TokfacKeeper          tokfacmodulekeeper.Keeper
+	IdentityKeeper        identitymodulekeeper.Keeper
 
 	// the module manager
 	ModuleManager      *module.Manager
 	BasicModuleManager module.BasicManager
-
-	IdentityKeeper identitymodulekeeper.Keeper
-	TokfacKeeper   tokfacmodulekeeper.Keeper
 
 	// simulation manager
 	sm *module.SimulationManager

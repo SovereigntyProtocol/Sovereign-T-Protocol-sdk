@@ -8,7 +8,7 @@ option go_package = "github.com/cosmos/cosmos-sdk/x/identity/types";
 
 // Params defines the parameters for the module.
 message Params {
-  option (amino.name) = "github.com/cosmos/cosmos-sdk/x/identity/Params";
+  option (amino.name) = "identity/x/identity/Params";
   option (gogoproto.equal) = true;
 
   

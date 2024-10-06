@@ -1,13 +1,15 @@
-package types
+package keeper
 
 import (
-	"encoding/hex"
 	"errors"
 	"fmt"
 	"strings"
 
-	"github.com/cosmos/cosmos-sdk/crypto/keys/secp256k1"
-	sdk "github.com/cosmos/cosmos-sdk/types"
+	// "github.com/cosmos/cosmos-sdk/crypto/keys/secp256k1"
+	// sdk "github.com/cosmos/cosmos-sdk/types"
+	"crypto/sha256"
+	"encoding/hex"
+
 	"github.com/cosmos/cosmos-sdk/types/bech32"
 )
 
@@ -28,11 +30,11 @@ const AccAddprifix = "ssi"
 const network = "5"
 
 func GetDefaultDidPrefix(networkID string) string {
-	networkName, exists := networkNames[networkID]
-	if !exists {
-		networkName = "UnknownNetwork" // or handle the error as needed
-	}
-	return "did:sovid:" + networkName + ":"
+	// _, exists := networkNames[networkID]
+	// if !exists {
+	// 	networkName = "UnknownNetwork" // or handle the error as needed
+	// }
+	return "did:sovid:"
 }
 
 // findDividerInDid finds the divider "1" in the string and return all characters before "1"
@@ -133,29 +135,8 @@ func VerifyDidFormat(did string) (bool, error) {
 	return true, nil
 }
 
-func CreateNewDid() (string, error) {
-
-	privKey := secp256k1.GenPrivKey()
-
-	// Derive the public key
-	pubKey := privKey.PubKey()
-
-	// Generate the address using the public key
-	address := sdk.AccAddress(pubKey.Address().Bytes())
-
-	// Encode the address using Bech32
-	bech32Address := address.String()
-
-	fmt.Printf("New address: %s\n", bech32Address)
-
-	_, data, err := bech32.DecodeAndConvert(bech32Address)
-	dataString := hex.EncodeToString(data)
-
-	if err != nil {
-		return "", err
-	}
-	didprefix := GetDefaultDidPrefix(network)
-
-	return didprefix + "1" + dataString, nil
-
+func (k Keeper) generateShortDeterministicUserID(input string, length int) string {
+	hash := sha256.Sum256([]byte(input))
+	truncatedHash := hex.EncodeToString(hash[:length/2]) // half the length because 2 hex chars represent 1 byte
+	return "did:sovid:" + truncatedHash
 }
