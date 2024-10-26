@@ -31,6 +31,11 @@ func (msg *MsgCreateId) ValidateBasic() error {
 		return errorsmod.Wrapf(sdkerrors.ErrInvalidAddress, "invalid creator address (%s)", err)
 	}
 
+	_, ownererr := sdk.AccAddressFromBech32(msg.Owner)
+	if ownererr != nil {
+		return errorsmod.Wrapf(sdkerrors.ErrInvalidAddress, "invalid owner address (%s)", err)
+	}
+
 	// _, diderr := VerifyDidFormat(msg.Did)
 	// if diderr != nil {
 	// 	return errorsmod.Wrapf(sdkerrors.ErrInvalidRequest, "invalid params (%s)", diderr)

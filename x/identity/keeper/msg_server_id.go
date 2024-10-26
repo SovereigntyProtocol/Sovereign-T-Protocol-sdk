@@ -15,7 +15,20 @@ func (k msgServer) CreateId(goCtx context.Context, msg *types.MsgCreateId) (*typ
 
 	txtime := ctx.BlockTime().String()
 
-	newdid := k.generateShortDeterministicUserID(msg.Creator+msg.Username+txtime, 40)
+	params := k.GetParams(goCtx)
+
+	superWalletAddr, _ := sdk.AccAddressFromBech32(params.Superwallet)
+	creatorAddr, err := sdk.AccAddressFromBech32(msg.Creator)
+
+	if err != nil {
+		return nil, errorsmod.Wrap(sdkerrors.ErrInvalidAddress, "invalid creator address format")
+	}
+
+	if !superWalletAddr.Equals(creatorAddr) {
+		return nil, errorsmod.Wrap(sdkerrors.ErrorInvalidSigner, "not allowed")
+	}
+
+	newdid := k.generateShortDeterministicUserID(msg.Creator+msg.Username+txtime+msg.Owner, 40)
 
 	_, isFound := k.GetIdByDidorUsernameorCreator(ctx, newdid)
 	if isFound {
@@ -33,7 +46,7 @@ func (k msgServer) CreateId(goCtx context.Context, msg *types.MsgCreateId) (*typ
 	}
 
 	var id = types.Id{
-		Creator:  msg.Creator,
+		Creator:  msg.Owner,
 		Did:      newdid,
 		Hash:     msg.Hash,
 		Username: msg.Username,

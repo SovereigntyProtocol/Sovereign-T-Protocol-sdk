@@ -11,7 +11,7 @@ var _ paramtypes.ParamSet = (*Params)(nil)
 var (
 	KeySuperwallet = []byte("Superwallet")
 	// TODO: Determine the default value
-	DefaultSuperwallet string = "ssi18evc5mvlvlnmywrxw7avx9dkrj0zrrhmhp7nrj"
+	DefaultSuperwallet string = "ssi1vh7rujmp035p34c3l0j33t4g3guksaz00jvfhe"
 )
 
 // ParamKeyTable the param key table for launch module
