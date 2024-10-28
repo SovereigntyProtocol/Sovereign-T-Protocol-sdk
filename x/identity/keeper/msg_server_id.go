@@ -40,7 +40,7 @@ func (k msgServer) CreateId(goCtx context.Context, msg *types.MsgCreateId) (*typ
 		return nil, errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "username already set")
 	}
 
-	_, isCreatorFound := k.GetIdByDidorUsernameorCreator(ctx, msg.Creator)
+	_, isCreatorFound := k.GetIdByDidorUsernameorCreator(ctx, msg.Owner)
 	if isCreatorFound {
 		return nil, errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "wallet already set")
 	}
