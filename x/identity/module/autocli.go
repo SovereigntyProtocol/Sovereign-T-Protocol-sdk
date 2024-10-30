@@ -42,9 +42,9 @@ func (am AppModule) AutoCLIOptions() *autocliv1.ModuleOptions {
 				},
 				{
 					RpcMethod:      "CreateId",
-					Use:            "create-id [hash] [username]",
+					Use:            "create-id [hash] [username] [owner]",
 					Short:          "Create a new ID",
-					PositionalArgs: []*autocliv1.PositionalArgDescriptor{{ProtoField: "hash"}, {ProtoField: "username"}},
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{{ProtoField: "hash"}, {ProtoField: "username"}, {ProtoField: "owner"}},
 				},
 				{
 					RpcMethod:      "UpdateId",
